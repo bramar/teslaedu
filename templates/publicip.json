@@ -1,0 +1,50 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "publicIPAddressName": {
+            "type": "string",
+            "defaultValue": "TEduPublicIP",
+            "metadata": {
+                "description": "Public IP Address Name"
+            }
+        },
+        "dnsNameForPublicIP": {
+            "type": "string",
+            "defaultValue": "tedulb",
+            "metadata": {
+                "description": "DNS Name for Public IP Address"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location of resources"
+            }
+        },
+        "publicIPAddressType": {
+            "type": "string",
+            "defaultValue": "dynamic",
+            "metadata": {
+                "description": "Type of Public IP (Static or Dynamic)"
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('publicIPAddressName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "publicIPAllocationMethod": "[parameters('publicIPAddressType')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
