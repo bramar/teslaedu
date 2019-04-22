@@ -2,4 +2,67 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "_artifactsLocation": {
+        "_artifactLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "URI For nested templates"
+            },
+            "defaultValue": "https://raw.githubusercontent.com/bramar/teslaedu/master/templates/"
+        },
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "Admin username for VM"
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Admin password for VM"
+            }
+        },
+        "mysqlPgresVcores": {
+            "type": "int",
+            "allowedValues": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+            ],
+            "defaultValue": 2,
+            "metadata": {
+                "description": "MySQL/Postgres vCores."
+            }
+        },
+        "mysqlPgressStgSizeGB": {
+            "type": "int",
+            "defaultValue": "125",
+            "minValue": 5,
+            "maxValue": 1024,
+            "metadata": {
+                "description": "MySQL/Postgrase storage size in GB."
+            }
+        },
+        "fileServerDiskSize": {
+            "type": "int",
+            "defaultValue": "127",
+            "metadata": {
+                "description": "Size per disk for NFS server"
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "name": "networkTemplate",
+            "properties": {
+                "mode":"Incremental"
+
+            }
+        }
+    ]
+}
+
