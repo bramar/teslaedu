@@ -11,7 +11,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2017-10-01",
             "location": "[parameters('tEduCommon').location]",
-            "name": "[parameters('tEduCommon').vNetName]",
+            "name": "[parameters('tEduCommon').vnetName]",
             "properties": {
                 "addressSpace": "[parameters('tEduCommon').vnetAddressPrefix]"
             }
