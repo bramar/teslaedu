@@ -89,12 +89,16 @@
                 "description": "Virtual NET Name"
             }
         },
-        "addressPrefix": {
-            "type": "string",
-            "defaultValue": "10.0.0.0/16",
+        "vnetAddressPrefix": {
+            "type": "array",
+            "defaultValue": ["10.0.0.0/16"],
             "metadata": {
                 "description": "Default Address prefix"
             }
+        },
+        "vnetNewOrExisting": {
+            "type": "string",
+            "defaultValue": "new"
         },
         "subnetPrefix": {
             "type": "string",
@@ -128,10 +132,28 @@
             "storageNewOrExisting": "[parameters('storageNewOrExisting')]",
             "storageAccountType": "[parameters('storageAccountType')]",
             "location": "[parameters('location')]",
-            "baseTemplateUrl": "[parameters('_artifactLocation')]"
+            "baseTemplateUrl": "[parameters('_artifactLocation')]",
+            "vnetNewOrExisting": "[parameters('vnetNewOrExisting')]",
+            "vnetAddressPrefix": "[parameters('vnetAddressPrefix')]",
+            "vNetName": "[parameters('vNetName')]"
         }
     },
     "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "name": "networkTemplate",
+            "condition": "[equals(variables('tEduCommon').vnetNewOrExisting, 'new')]",
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {
+                    "tEduCommon": {
+                        "value": "[variables('tEduCommon')]"
+                    }
+                },
+                "templateLink": "[concat(variables('tEduCommon').baseTemplateUrl, 'network.json')]"
+            }
+        },
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2017-05-10",
