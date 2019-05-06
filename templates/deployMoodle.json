@@ -136,7 +136,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2017-05-10",
             "name": "storageAccountTemplate",
-            "condition": "[variables('tEduCommon').storageNewOrExisting]",
+            "condition": "[equals(variables('tEduCommon').storageNewOrExisting, 'new')]",
             "properties": {
                 "mode":"Incremental",
                 "parameters": {
