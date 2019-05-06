@@ -15,7 +15,7 @@
             "properties": {
                 "addressSpace": { 
                     "addressPrefixes": [
-                        "[parameters('tEduCommon').vnetAddressPrefix]"
+                        "[parameters('tEduCommon').vnetAddressPrefix[0].value]"
                     ]
                 }
             }
