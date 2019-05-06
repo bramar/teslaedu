@@ -82,7 +82,7 @@
                 "description": "Storage Account Sku Type"
             }
         },
-        "vNetName": {
+        "vnetName": {
             "type": "string",
             "defaultValue": "TEduVNet",
             "metadata": {
@@ -135,7 +135,7 @@
             "baseTemplateUrl": "[parameters('_artifactLocation')]",
             "vnetNewOrExisting": "[parameters('vnetNewOrExisting')]",
             "vnetAddressPrefix": "[parameters('vnetAddressPrefix')]",
-            "vNetName": "[parameters('vNetName')]"
+            "vnetName": "[parameters('vnetName')]"
         }
     },
     "resources": [
@@ -151,7 +151,9 @@
                         "value": "[variables('tEduCommon')]"
                     }
                 },
-                "templateLink": "[concat(variables('tEduCommon').baseTemplateUrl, 'network.json')]"
+                "templateLink": {
+                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl, 'network.json')]"
+                }
             }
         },
         {
