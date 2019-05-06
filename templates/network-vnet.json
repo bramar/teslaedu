@@ -1,0 +1,20 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tEduCommon": {
+            "type": "object"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2017-10-01",
+            "location": "[parameters('tEduCommon').location]",
+            "name": "[parameters('tEduCommon').vNetName]",
+            "properties": {
+                "addressSpace": "[parameters('tEduCommon').vnetAddressPrefix]"
+            }
+        }
+    ]
+}
