@@ -13,7 +13,11 @@
             "location": "[parameters('tEduCommon').location]",
             "name": "[parameters('tEduCommon').vnetName]",
             "properties": {
-                "addressSpace": "[parameters('tEduCommon').vnetAddressPrefix]"
+                "addressSpace": { 
+                    "addressPrefixes": [
+                        "[parameters('tEduCommon').vnetAddressPrefix]"
+                    ]
+                }
             }
         }
     ]
