@@ -121,6 +121,10 @@
                 "description": "Name for Public IP"
             }
         },
+        "addressPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.0.0/24"
+        },
         "location": {
             "type": "string",
             "defaultValue": "[resourceGroup().location]"
@@ -135,7 +139,8 @@
             "baseTemplateUrl": "[parameters('_artifactLocation')]",
             "vnetNewOrExisting": "[parameters('vnetNewOrExisting')]",
             "vnetAddressPrefix": "[parameters('vnetAddressPrefix')]",
-            "vnetName": "[parameters('vnetName')]"
+            "vnetName": "[parameters('vnetName')]",
+            "addressPrefix": "[parameters('addressPrefix')]"
         }
     },
     "resources": [
