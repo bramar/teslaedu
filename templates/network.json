@@ -22,6 +22,24 @@
                     "uri": "[concat(parameters('tEduCommon').baseTemplateUrl,'network-vnet.json')]"
                 }
             }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/vNetTemplate"
+            ],
+            "name": "subnetTemplate",
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {
+                    "tEduCommon": { "value": "[parameters('tEduCommon')]" },
+                    "subnetName": { "value": "[concat(parameters('tEduCommon').vnetName, '-subnet')]" }
+                },
+                "templateLink": {
+                    "uri": "[concat(parameters('tEduCommon').baseTemplateUrl, 'network-subnets.json')]"
+                }
+            }
         }
     ]
 }
