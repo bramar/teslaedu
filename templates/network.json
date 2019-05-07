@@ -34,7 +34,7 @@
                 "mode": "Incremental",
                 "parameters": {
                     "tEduCommon": { "value": "[parameters('tEduCommon')]" },
-                    "subnetName": { "value": "[concat(parameters('tEduCommon').vnetName, '-subnet')]" }
+                    "subnetName": { "value": "[concat(parameters('tEduCommon').vnetName, '/subnet')]" }
                 },
                 "templateLink": {
                     "uri": "[concat(parameters('tEduCommon').baseTemplateUrl, 'network-subnets.json')]"
