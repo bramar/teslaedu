@@ -16,7 +16,7 @@
             "name": "[parameters('subnetName')]",
             "location": "[parameters('tEduCommon').location]",
             "properties": {
-                "addressSpace": "[parameters('tEduCommon').addressPrefix]"
+                "addressPrefix": "[parameters('tEduCommon').addressPrefix]"
             }
         }
     ]
