@@ -1,0 +1,23 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tEduCommon": {
+            "type": "object"
+        },
+        "subnetName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2017-10-01",
+            "name": "[parameters('subnetName')]",
+            "location": "[parameters('tEduCommon').location]",
+            "properties": {
+                "addressSpace": "[parameters('tEduCommon').addressPrefix]"
+            }
+        }
+    ]
+}
