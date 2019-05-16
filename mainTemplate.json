@@ -73,14 +73,13 @@
                     "adminPassword": { "value": "[parameters('adminPassword')]" },
                     "mysqlPgresVcores": { "value": 8 },
                     "mysqlPgressStgSizeGB": { "value": 128 },
-                    "fileServerDiskSize": { "value": 128 },
+                    "nfsDiskSize": { "value": "[parameters('nfsDiskSize')]" },
                     "vnetName": { "value": "[parameters('vnetName')]" },
                     "vnetAddressPrefix": { "value": "[parameters('vnetAddressPrefix')]" },
                     "vnetNewOrExisting": { "value": "[parameters('vnetNewOrExisting')]" },
                     "addressPrefix": { "value": "[parameters('addressPrefix')]"},
                     "publicIPNewOrExisting": { "value": "[parameters('publicIPNewOrExisting')]" },
                     "dnsNameForPublicIP": { "value": "[parameters('dnsNameForPublicIP')]"},
-                    "nfsDiskSize": { "value": "[parameters('nfsDiskSize')]" }
                 },
                 "templateLink": {
                     "uri": "[concat(variables('_artifactLocation'), 'deployMoodle.json')]"
