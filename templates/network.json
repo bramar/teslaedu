@@ -40,6 +40,20 @@
                     "uri": "[concat(parameters('tEduCommon').baseTemplateUrl, 'network-subnets.json')]"
                 }
             }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "name": "publicIPAddress",
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {
+                    "tEduCommon": { "value": "[parameters('tEduCommon')]"}
+                },
+                "templateLink": {
+                    "uri": "[concat(parameters('tEduCommon').baseTemplateUrl, 'publicip.json')]"
+                }
+            }
         }
     ]
 }
