@@ -1,0 +1,77 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "type": "string",
+            "defaultValue": "bramar",
+            "metadata": {
+                "description": "Admin username for VM"
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Admin password for VM"
+            },
+            "defaultValue": "AlfaRomeo156"
+        },
+        "vnetName": {
+            "type": "string",
+            "defaultValue": "tEduVNet",
+            "metadata": {
+                "description": "Tesla Edu VNet Name"
+            }
+        },
+        "vnetAddressPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.0.0/16"
+        },
+        "vnetNewOrExisting": {
+            "type": "string",
+            "defaultValue": "new"
+        },
+        "addressPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.0.0/24"
+        },
+        "publicIPNewOrExisting": {
+            "type": "string",
+            "defaultValue": "new"
+        },
+        "dnsNameForPublicIP": {
+            "type": "string",
+            "defaultValue": "tedupip"
+        }
+    },
+    "variables": {
+        "_artifactLocation": "https://raw.githubusercontent.com/bramar/teslaedu/master/templates/"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "name": "mainTemplate",
+            "properties": {
+                "mode":"Incremental",
+                "parameters": {
+                    "_artifactLocation": { "value": "[variables('_artifactLocation')]" },
+                    "adminUsername": { "value": "[parameters('adminUsername')]" },
+                    "adminPassword": { "value": "[parameters('adminPassword')]" },
+                    "mysqlPgresVcores": { "value": 8 },
+                    "mysqlPgressStgSizeGB": { "value": 128 },
+                    "fileServerDiskSize": { "value": 128 },
+                    "vnetName": { "value": "[parameters('vnetName')]" },
+                    "vnetAddressPrefix": { "value": "[parameters('vnetAddressPrefix')]" },
+                    "vnetNewOrExisting": { "value": "[parameters('vnetNewOrExisting')]" },
+                    "addressPrefix": { "value": "[parameters('addressPrefix')]"},
+                    "publicIPNewOrExisting": { "value": "[parameters('publicIPNewOrExisting')]" },
+                    "dnsNameForPublicIP": { "value": "[parameters('dnsNameForPublicIP')]"}
+                },
+                "templateLink": {
+                    "uri": "[concat(variables('_artifactLocation'), 'deployMoodle.json')]"
+                }
+            }
+        }
+    ]
+}
