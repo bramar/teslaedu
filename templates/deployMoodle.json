@@ -128,6 +128,14 @@
         "location": {
             "type": "string",
             "defaultValue": "[resourceGroup().location]"
+        },
+        "publicIPNewOrExisting": {
+            "type": "string",
+            "defaultValue": "new"
+        },
+        "dnsNameForPublicIP": {
+            "type": "string",
+            "defaultValue": "tedupip"
         }
     },
     "variables": {
@@ -140,7 +148,10 @@
             "vnetNewOrExisting": "[parameters('vnetNewOrExisting')]",
             "vnetAddressPrefix": "[parameters('vnetAddressPrefix')]",
             "vnetName": "[parameters('vnetName')]",
-            "addressPrefix": "[parameters('addressPrefix')]"
+            "addressPrefix": "[parameters('addressPrefix')]",
+            "publicIPNewOrExisting": "[parameters('publicIPNewOrExisting')]",
+            "publicIPAddressName": "[parameters('publicIPAddressName')]",
+            "dnsNameForPublicIP": "[parameters('dnsNameForPublicIP')]"
         }
     },
     "resources": [
