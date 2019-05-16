@@ -79,7 +79,7 @@
                     "vnetNewOrExisting": { "value": "[parameters('vnetNewOrExisting')]" },
                     "addressPrefix": { "value": "[parameters('addressPrefix')]"},
                     "publicIPNewOrExisting": { "value": "[parameters('publicIPNewOrExisting')]" },
-                    "dnsNameForPublicIP": { "value": "[parameters('dnsNameForPublicIP')]"},
+                    "dnsNameForPublicIP": { "value": "[parameters('dnsNameForPublicIP')]"}
                 },
                 "templateLink": {
                     "uri": "[concat(variables('_artifactLocation'), 'deployMoodle.json')]"
