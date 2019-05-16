@@ -116,7 +116,7 @@
         },
         "publicIPAddressName": {
             "type": "string",
-            "defaultValue": "TEduPublicIP",
+            "defaultValue": "tedupublicip",
             "metadata": {
                 "description": "Name for Public IP"
             }
