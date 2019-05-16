@@ -12,9 +12,6 @@
             "name": "[parameters('tEduCommon').publicIPAddressName]",
             "location": "[parameters('tEduCommon').location]",
             "apiVersion": "2018-02-01",
-            "sku": {
-                "name": "Basic"
-            },
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "publicIPAddressVersion": "IPv4",
