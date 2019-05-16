@@ -22,7 +22,6 @@
             "metadata": {
                 "description": "Tesla Edu VNet Name"
             }
-            
         },
         "vnetAddressPrefix": {
             "type": "string",
