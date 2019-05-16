@@ -11,7 +11,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "name": "[parameters('tEduCommon').publicIPAddressName]",
             "location": "[parameters('tEduCommon').location]",
-            "apiVersion": "2017-11-01",
+            "apiVersion": "2018-02-01",
             "sku": {
                 "name": "Basic"
             },
