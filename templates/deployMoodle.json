@@ -211,7 +211,7 @@
                         "value": "[reference('networkTemplate').outputs.subnetId.value]"
                     }
                 },
-                "parametersLink": {
+                "templateLink": {
                     "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'nfsvm.json')]"
                 }
             }
