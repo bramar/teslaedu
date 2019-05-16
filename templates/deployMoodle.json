@@ -152,7 +152,9 @@
             "publicIPNewOrExisting": "[parameters('publicIPNewOrExisting')]",
             "publicIPAddressName": "[parameters('publicIPAddressName')]",
             "dnsNameForPublicIP": "[parameters('dnsNameForPublicIP')]",
-            "nfsDiskSize": "[parameters('nfsDiskSize')]"
+            "nfsDiskSize": "[parameters('nfsDiskSize')]",
+            "adminPassword": "[parameters('adminPassword')]",
+            "adminUsername": "[parameters('adminUsername')]"
         }
     },
     "resources": [
