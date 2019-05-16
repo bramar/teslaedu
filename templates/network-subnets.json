@@ -19,5 +19,11 @@
                 "addressPrefix": "[parameters('tEduCommon').addressPrefix]"
             }
         }
-    ]
+    ],
+    "outputs": {
+        "subnetId": {
+            "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('subnetName'))]",
+            "type": "string"
+        }
+    }
 }

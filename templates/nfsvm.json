@@ -4,6 +4,81 @@
     "parameters": {
         "tEduCommon": {
             "type": "object"
+        },
+        "publicIpId": {
+            "type": "string"
+        },
+        "subnetId": {
+            "type": "string"
         }
-    }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2017-10-01",
+            "name": "nfsNic",
+            "location": "[parameters('tEduCommon').location]",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[parameters('publicIpId')]"
+                            },
+                            "subnet": {
+                                "id": "[parameters('subnetId')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2017-12-01",
+            "name": "teslaEduNFS",
+            "location": "[parameters('tEduCommon').location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', 'nfsNic')]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D1_v2"
+                },
+                "osProfile": {
+                    "computerName": "tEduNFS",
+                    "adminPassword": "[parameters('tEduCommon').adminPassword]",
+                    "adminUsername": "[parameters('tEduCommon').adminUsername]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "Canonical",
+                        "offer": "UbuntuServer",
+                        "sku": "16.04.0-LTS",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage",
+                        "diskSizeGB": 40
+                    },
+                    "dataDisks": [
+                        {
+                            "diskSizeGB": "[parameters('tEduCommon').nfsDiskSize]",
+                            "lun": 0,
+                            "createOption": "Empty"
+                        }
+                    ]
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', 'nfsNic')]"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
 }

@@ -42,6 +42,19 @@
         "dnsNameForPublicIP": {
             "type": "string",
             "defaultValue": "tedupip"
+        },
+        "nfsDiskSize": {
+            "type": "int",
+            "defaultValue": "120",
+            "allowedValues": [
+                80,
+                100,
+                120,
+                150,
+                200,
+                250,
+                300
+            ]
         }
     },
     "variables": {
@@ -66,7 +79,8 @@
                     "vnetNewOrExisting": { "value": "[parameters('vnetNewOrExisting')]" },
                     "addressPrefix": { "value": "[parameters('addressPrefix')]"},
                     "publicIPNewOrExisting": { "value": "[parameters('publicIPNewOrExisting')]" },
-                    "dnsNameForPublicIP": { "value": "[parameters('dnsNameForPublicIP')]"}
+                    "dnsNameForPublicIP": { "value": "[parameters('dnsNameForPublicIP')]"},
+                    "nfsDiskSize": { "value": "[parameters('nfsDiskSize')]" }
                 },
                 "templateLink": {
                     "uri": "[concat(variables('_artifactLocation'), 'deployMoodle.json')]"

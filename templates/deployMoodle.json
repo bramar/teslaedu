@@ -47,7 +47,7 @@
                 "description": "MySQL/Postgrase storage size in GB."
             }
         },
-        "fileServerDiskSize": {
+        "nfsDiskSize": {
             "type": "int",
             "defaultValue": "127",
             "metadata": {
@@ -151,7 +151,8 @@
             "addressPrefix": "[parameters('addressPrefix')]",
             "publicIPNewOrExisting": "[parameters('publicIPNewOrExisting')]",
             "publicIPAddressName": "[parameters('publicIPAddressName')]",
-            "dnsNameForPublicIP": "[parameters('dnsNameForPublicIP')]"
+            "dnsNameForPublicIP": "[parameters('dnsNameForPublicIP')]",
+            "nfsDiskSize": "[parameters('nfsDiskSize')]"
         }
     },
     "resources": [
@@ -186,6 +187,32 @@
                 },
                 "templateLink": {
                     "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'storageAccount.json')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/storageAccountTemplate",
+                "Microsoft.Resources/deployments/networkTemplate"
+            ],
+            "name": "nfsVmTemaplate",
+            "apiVersion": "2017-05-10",
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {
+                    "tEduCommon": {
+                        "value": "[variables('tEduCommon')]"
+                    },
+                    "publicIpId": {
+                        "value": "[reference('networkTemplate').outputs.publicIpId.value]"
+                    },
+                    "subnetId": {
+                        "value": "[reference('networkTemplate').outputs.subnetId.value]"
+                    }
+                },
+                "parametersLink": {
+                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'nfsvm.json')]"
                 }
             }
         }
