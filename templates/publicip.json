@@ -22,6 +22,9 @@
         }
     ],
     "outputs": {
-        "publicIpId": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('tEduCommon').publicIPAddressName)]"
+        "publicIpId": {
+            "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('tEduCommon').publicIPAddressName)]",
+            "type": "string"
+        }
     }
 }
