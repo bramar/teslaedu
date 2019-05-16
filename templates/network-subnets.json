@@ -22,7 +22,7 @@
     ],
     "outputs": {
         "subnetId": {
-            "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('subnetName'))]",
+            "value": "[resourceId('Microsoft.Network/virtualNetworks', parameters('tEduCommon').vnetName, 'subnets','subnet')]",
             "type": "string"
         }
     }
