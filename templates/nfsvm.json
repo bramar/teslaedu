@@ -15,6 +15,10 @@
             "type": "string"
         }
     },
+    "variables": {
+        "commandToExecute": "bash -x installnfs.sh",
+        "nfsScriptUrl": "[concat(parameters('tEduCommon')._rootArtifactLocation, 'scripts/installnfs.sh')]"
+    },
     "resources": [
         {
             "type": "Microsoft.Network/networkInterfaces",
@@ -83,6 +87,26 @@
                     ]
                 }
             }
-        }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "installnfsserver",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', 'teslaEduNFS')]"
+            ],
+            "apiVersion": "2015-06-15",
+            "properties": {
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "autoUpgradeMinorVersion": true,
+                "protectedSettings": {
+                    "commandToExecute": "[variables('commandToExecute')]",
+                    "fileUris": [
+                        "[variables('nfsScriptUrl')]"
+                    ]
+                }
+            }
+        }        
     ]
 }

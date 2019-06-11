@@ -140,6 +140,7 @@
     },
     "variables": {
         "tEduCommon": {
+            "_rootArtifactLocation": "https://raw.githubusercontent.com/bramar/teslaedu/master/",
             "storageAccountName": "[parameters('storageAccountName')]",
             "storageNewOrExisting": "[parameters('storageNewOrExisting')]",
             "storageAccountType": "[parameters('storageAccountType')]",
