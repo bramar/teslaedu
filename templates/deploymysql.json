@@ -1,0 +1,43 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tEduCommon": {
+            "type": "object"
+        },
+        "mysqlFirewallSubnet": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.DBforMySQL/servers",
+            "apiVersion": "2017-12-01",
+            "location": "[parameters('tEduCommon').location]",
+            "name": "[parameters('tEduCommon').mysqlServerName]",
+            "properties": {
+                "sslEnforcement": "Disabled",
+                "administratorLogin": "[parameters('tEduCommon').mysqlAdminUsername]",
+                "administratorLoginPassword": "[parameters('tEduCommon').mysqlAdminPassword]",
+                "storageProfile": {
+                    "storageMB": "[mul(parameters('tEduCommon').mysqlPgressStgSizeGB, 1024)]",
+                    "backupRetentionDays": "35",
+                    "geoRedundantBackup": "Disabled"
+                },
+                "version": "[parameters('tEduCommon').mysqlVersion]",
+                "createMode": "Default"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2017-12-01",
+                    "name": "mysql-allow-localnet",
+                    "type": "firewallRules",
+                    "properties":{
+                        "startIpAddress": "[concat(parameters('mysqlFirewallSubnet'),'.0')]",
+                        "endIpAddress": "[concat(parameters('mysqlFirewallSubnet'),'.255')]"
+                    }
+                }
+            ]
+        }
+    ]
+}

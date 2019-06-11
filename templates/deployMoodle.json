@@ -136,29 +136,70 @@
         "dnsNameForPublicIP": {
             "type": "string",
             "defaultValue": "tedupip"
+        },
+        "mysqlSkuTier": {
+            "type": "string",
+            "allowedValues": [
+                "Basic",
+                "GeneralPurpose",
+                "MemoryOptimized"
+            ],
+            "defaultValue": "GeneralPurpose"
+        },
+        "mysqlSkuHwFamily": {
+            "type": "string",
+            "allowedValues": [
+                "Gen4",
+                "Gen5"
+            ],
+            "defaultValue": "Gen5"
+        },
+        "mysqlVersion": {
+            "type": "string",
+            "allowedValues": [
+                "5.6",
+                "5.7"
+            ],
+            "defaultValue": "5.7"
+        },
+        "mysqlAdminUsername": {
+            "type": "string",
+            "defaultValue": "bramar"
+        },
+        "mysqlAdminPassword": {
+            "type": "securestring",
+            "defaultValue": "trustno1"
         }
     },
     "variables": {
         "tEduCommon": {
             "_rootArtifactLocation": "https://raw.githubusercontent.com/bramar/teslaedu/master/",
-            "storageAccountName": "[parameters('storageAccountName')]",
+            "storageAccountName": "[concat(parameters('storageAccountName'),'-',variables('resourceprefix'))]",
             "storageNewOrExisting": "[parameters('storageNewOrExisting')]",
             "storageAccountType": "[parameters('storageAccountType')]",
             "location": "[parameters('location')]",
             "baseTemplateUrl": "[parameters('_artifactLocation')]",
             "vnetNewOrExisting": "[parameters('vnetNewOrExisting')]",
             "vnetAddressPrefix": "[parameters('vnetAddressPrefix')]",
-            "vnetName": "[parameters('vnetName')]",
+            "vnetName": "[concat(parameters('vnetName'),'-',variables('resourceprefix'))]",
             "addressPrefix": "[parameters('addressPrefix')]",
             "publicIPNewOrExisting": "[parameters('publicIPNewOrExisting')]",
-            "publicIPAddressName": "[parameters('publicIPAddressName')]",
+            "publicIPAddressName": "[concat(parameters('publicIPAddressName'),'-',variables('resourceprefix'))]",
             "dnsNameForPublicIP": "[parameters('dnsNameForPublicIP')]",
             "nfsDiskSize": "[parameters('nfsDiskSize')]",
             "adminPassword": "[parameters('adminPassword')]",
-            "adminUsername": "[parameters('adminUsername')]"
+            "adminUsername": "[parameters('adminUsername')]",
+            "mysqlSkuHwFamily": "[parameters('mysqlSkuHwFamily')]",
+            "mysqlSkuTier": "[parameters('mysqlSkuTier')]",
+            "mysqlVersion": "[parameters('mysqlVersion')]",
+            "mysqlServerName": "[concat('mysqlserver', variables('resourceprefix'))]",
+            "mysqlAdminPassword": "[parameters('mysqlAdminPassword')]",
+            "mysqlAdminUsername": "[parameters('mysqlAdminUsername')]"
         },
         "octets": "[split(variables('tEduCommon').vnetAddressPrefix,'.')]",
-        "nfsStaticIP": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.100')]"
+        "nfsStaticIP": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.100')]",
+        "mysqlFirewallSubnet": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.100')]",
+        "resourceprefix": "[substring(uniqueString(resourceGroup().id, deployment().name),3,6)]"
     },
     "resources": [
         {
@@ -221,6 +262,25 @@
                 },
                 "templateLink": {
                     "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'nfsvm.json')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "mysqlDbServer",
+            "apiVersion": "2017-05-10",
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {
+                    "tEduCommon": {
+                        "value": "[variables('tEduCommon')]"
+                    },
+                    "mysqlFirewallSubnet": {
+                        "value": "[variables('mysqlFirewallSubnet')]"
+                    }
+                },
+                "templateLink": {
+                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'deploymysql.json')]"
                 }
             }
         }
