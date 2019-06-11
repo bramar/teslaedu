@@ -42,5 +42,11 @@
                 }
             ]
         }
-    ]
+    ],
+    "outputs": {
+        "dbFQDN": {
+            "type": "string",
+            "value": "[reference(parameters('tEduCommon').mysqlServerName).fullyQualifiedDomainName]"
+        }
+    }
 }
