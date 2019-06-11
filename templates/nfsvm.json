@@ -86,27 +86,32 @@
                         }
                     ]
                 }
-            }
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "installnfsserver",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', 'teslaEduNFS')]"
-            ],
-            "apiVersion": "2015-06-15",
-            "properties": {
-                "publisher": "Microsoft.Azure.Extensions",
-                "type": "CustomScript",
-                "typeHandlerVersion": "2.0",
-                "autoUpgradeMinorVersion": true,
-                "protectedSettings": {
-                    "commandToExecute": "[variables('commandToExecute')]",
-                    "fileUris": [
-                        "[variables('nfsScriptUrl')]"
-                    ]
+            },
+            "resources": [
+                {
+                    "type": "extensions",
+                    "name": "installnfsserver",
+                    "dependsOn": [
+                        "[concat('Microsoft.Compute/virtualMachines/', 'teslaEduNFS')]"
+                    ],
+                    "apiVersion": "2017-03-30",
+                    "location": "[parameters('tEduCommon').location]",
+                    "properties": {
+                        "settings": {
+                            "fileUris": [
+                                "[variables('nfsScriptUrl')]"
+                            ]
+                        },
+                        "publisher": "Microsoft.Azure.Extensions",
+                        "type": "CustomScript",
+                        "typeHandlerVersion": "2.0",
+                        "autoUpgradeMinorVersion": true,
+                        "protectedSettings": {
+                            "commandToExecute": "[variables('commandToExecute')]",
+                        }
+                    }
                 }
-            }
+            ]
         }        
     ]
 }
