@@ -30,6 +30,9 @@
             "resources": [
                 {
                     "apiVersion": "2017-12-01",
+                    "dependsOn": [
+                        "[concat('Microsoft.DBforMySQL/servers/', parameters('tEduCommon').mysqlServerName)]"
+                    ],
                     "name": "mysql-allow-localnet",
                     "type": "firewallRules",
                     "properties":{
