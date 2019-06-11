@@ -155,7 +155,9 @@
             "nfsDiskSize": "[parameters('nfsDiskSize')]",
             "adminPassword": "[parameters('adminPassword')]",
             "adminUsername": "[parameters('adminUsername')]"
-        }
+        },
+        "octets": "[split(variables('tEduCommon').vnetAddressPrefix,'.')]",
+        "nfsStaticIP": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.100')]"
     },
     "resources": [
         {
@@ -211,6 +213,9 @@
                     },
                     "subnetId": {
                         "value": "[reference('networkTemplate').outputs.subnetId.value]"
+                    },
+                    "nfsStaticIP": {
+                        "value": "[variables('nfsStaticIP')]"
                     }
                 },
                 "templateLink": {
