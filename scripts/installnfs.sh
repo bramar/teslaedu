@@ -19,7 +19,7 @@ sudo lvcreate -n nfs_lv -l 100%FREE nfs_vg
 log "Creating Filesystem on LVM"
 sudo mkfs.ext4 /dev/nfs_vg/nfs_lv
 log "Installing NFS Server"
-sudo apt-get install nfs-kernel-server | tee -a /var/log/scripts.log > /dev/null
+sudo apt-get install nfs-kernel-server nfs-common | tee -a /var/log/scripts.log > /dev/null
 log "Creating mountpoint for nfs"
 sudo mkdir -p /srv/nfs
 log "Optimizing permissions"
