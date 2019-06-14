@@ -49,7 +49,7 @@
         },
         "mysqlAdminPassword": {
             "type": "securestring",
-            "defaultValue": "trustno1"
+            "defaultValue": "@lfaRomeo156"
         },
         "nfsDiskSize": {
             "type": "int",
