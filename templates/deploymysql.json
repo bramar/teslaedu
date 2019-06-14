@@ -21,7 +21,7 @@
                 "administratorLoginPassword": "[parameters('tEduCommon').mysqlAdminPassword]",
                 "storageProfile": {
                     "storageMB": "[mul(parameters('tEduCommon').mysqlPgressStgSizeGB, 1024)]",
-                    "backupRetentionDays": "35",
+                    "backupRetentionDays": 35,
                     "geoRedundantBackup": "Disabled"
                 },
                 "version": "[parameters('tEduCommon').mysqlVersion]",
