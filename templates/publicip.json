@@ -27,7 +27,7 @@
             "type": "string"
         },
         "publicIp": {
-            "value": "[reference(parameters('tEduCommon').publicIPAddressName).ipAddress]",
+            "value": "[reference(parameters('tEduCommon').publicIPAddressName, '2018-11-01').ipAddress]",
             "type": "string"
         }
     }
