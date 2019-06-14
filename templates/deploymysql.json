@@ -27,6 +27,12 @@
                 "version": "[parameters('tEduCommon').mysqlVersion]",
                 "createMode": "Default"
             },
+            "sku": {
+                "capacity": "[parameters('tEduCommon').mysqlPgresVcores]",
+                "name": "[parameters('tEduCommon').mysqlPgresSkuName]",
+                "tier": "[parameters('tEduCommon').mysqlSkuTier]",
+                "family": "[parameters('tEduCommon').mysqlSkuHwFamily]"
+            },
             "resources": [
                 {
                     "apiVersion": "2017-12-01",

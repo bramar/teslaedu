@@ -195,7 +195,9 @@
             "mysqlServerName": "[concat('mysqlserver', variables('resourceprefix'))]",
             "mysqlAdminPassword": "[parameters('mysqlAdminPassword')]",
             "mysqlAdminUsername": "[parameters('mysqlAdminUsername')]",
-            "mysqlPgressStgSizeGB": "[parameters('mysqlPgressStgSizeGB')]"
+            "mysqlPgressStgSizeGB": "[parameters('mysqlPgressStgSizeGB')]",
+            "mysqlPgresVcores": "[parameters('mysqlPgresVcores')]",
+            "mysqlPgresSkuName": "[concat(if(equals(parameters('mysqlSkuTier'),'Basic'),'B',if(equals(parameters('mysqlSkuTier'),'GeneralPurpose'),'GP','MO')),'_',parameters('mysqlSkuHwFamily'),'_',string(parameters('mysqlPgresVcores')))]"
         },
         "octets": "[split(variables('tEduCommon').vnetAddressPrefix,'.')]",
         "nfsStaticIP": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.100')]",
