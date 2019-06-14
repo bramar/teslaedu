@@ -25,6 +25,10 @@
         "publicIpId": {
             "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('tEduCommon').publicIPAddressName)]",
             "type": "string"
+        },
+        "publicIp": {
+            "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',parameters('tEduCommon').publicIPAddressName),'2018-02-01').ipAddress]",
+            "type": "string"
         }
     }
 }

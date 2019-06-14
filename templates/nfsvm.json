@@ -32,9 +32,6 @@
                         "properties": {
                             "privateIPAllocationMethod": "Static",
                             "privateIPAddress": "[parameters('nfsStaticIP')]",
-                            "publicIPAddress": {
-                                "id": "[parameters('publicIpId')]"
-                            },
                             "subnet": {
                                 "id": "[parameters('subnetId')]"
                             }
