@@ -66,7 +66,8 @@
             "type": "string"
         },
         "publicIp": {
-            "value": "[reference(reference('publicIPAddress').outputs.publicIpId.value,'2018-11-01').ipAddress]"
+            "value": "[reference(reference('publicIPAddress').outputs.publicIpId.value,'2018-11-01').ipAddress]",
+            "type": "string"
         }
     }
 }
