@@ -202,7 +202,7 @@
         "octets": "[split(variables('tEduCommon').vnetAddressPrefix,'.')]",
         "nfsStaticIP": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.100')]",
         "mysqlFirewallSubnet": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2])]",
-        "resourceprefix": "[substring(uniqueString(resourceGroup().id, deployment().name),3,6)]"
+        "resourceprefix": "[substring(uniqueString(resourceGroup().id, deployment().name, 'TeslaEdu'),3,8)]"
     },
     "resources": [
         {
