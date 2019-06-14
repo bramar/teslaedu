@@ -194,7 +194,8 @@
             "mysqlVersion": "[parameters('mysqlVersion')]",
             "mysqlServerName": "[concat('mysqlserver', variables('resourceprefix'))]",
             "mysqlAdminPassword": "[parameters('mysqlAdminPassword')]",
-            "mysqlAdminUsername": "[parameters('mysqlAdminUsername')]"
+            "mysqlAdminUsername": "[parameters('mysqlAdminUsername')]",
+            "mysqlPgressStgSizeGB": "[parameters('mysqlPgressStgSizeGB')]"
         },
         "octets": "[split(variables('tEduCommon').vnetAddressPrefix,'.')]",
         "nfsStaticIP": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.100')]",
