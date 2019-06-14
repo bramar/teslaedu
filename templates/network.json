@@ -64,6 +64,9 @@
         "subnetId": {
             "value": "[reference('subnetTemplate').outputs.subnetId.value]",
             "type": "string"
+        },
+        "publicIp": {
+            "value": "[reference(reference('publicIPAddress').outputs.publicIpId.value,'2018-11-01').ipAddress]"
         }
     }
 }
