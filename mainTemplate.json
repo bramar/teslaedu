@@ -53,7 +53,7 @@
         },
         "nfsDiskSize": {
             "type": "int",
-            "defaultValue": "120",
+            "defaultValue": 120,
             "allowedValues": [
                 80,
                 100,
