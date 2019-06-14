@@ -54,6 +54,25 @@
                     "uri": "[concat(parameters('tEduCommon').baseTemplateUrl, 'publicip.json')]"
                 }
             }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "name": "fetchIpAddress",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/publicIPAddress"
+            ],
+            "properties": {
+                "mode":"Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('tEduCommon').baseTemplateUrl, 'fetchPublicIP.json')]"
+                },
+                "parameters": {
+                    "publicIPAddressId": {
+                        "value": "[reference('publicIPAddress').outputs.publicIpId.value]"
+                    }
+                }
+            }
         }
     ],
     "outputs": {
@@ -66,7 +85,7 @@
             "type": "string"
         },
         "publicIp": {
-            "value": "[reference(reference('publicIPAddress').outputs.publicIpId.value,'2018-11-01').ipAddress]",
+            "value": "[reference('fetchIpAddress').outputs.ipAddress.value]",
             "type": "string"
         }
     }
