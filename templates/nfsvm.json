@@ -94,7 +94,7 @@
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', 'teslaEduNFS')]"
                     ],
-                    "apiVersion": "2017-03-30",
+                    "apiVersion": "2017-12-01",
                     "location": "[parameters('tEduCommon').location]",
                     "properties": {
                         "settings": {
@@ -107,7 +107,7 @@
                         "typeHandlerVersion": "2.0",
                         "autoUpgradeMinorVersion": true,
                         "protectedSettings": {
-                            "commandToExecute": "[variables('commandToExecute')]",
+                            "commandToExecute": "[variables('commandToExecute')]"
                         }
                     }
                 }
