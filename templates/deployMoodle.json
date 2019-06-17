@@ -284,10 +284,39 @@
                     },
                     "moodlePublicIp": {
                         "value": "[reference('networkTemplate').outputs.publicIp.value]"
+                    },
+                    "publicIpId": {
+                        "value": "[reference('networkTemplate').outputs.publicIpId.value]"
                     }
                 },
                 "templateLink": {
                     "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'deploymysql.json')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/nfsVmTemaplate",
+                "Microsoft.Resources/deployments/mysqlDbServer"
+            ],
+            "name": "moodleServer",
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {
+                    "tEduCommon": {
+                        "value": "[variables('tEduCommon')]"
+                    },
+                    "subnetId": {
+                        "value": "[reference('networkTemplate').outputs.subnetId.value]"
+                    },
+                    "moodleStaticIP": {
+                        "value": "[variables('moodleStaticIP')]"
+                    },
+
+                },
+                "templateLink": {
+                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'deploymoodlevm.json')]"
                 }
             }
         }

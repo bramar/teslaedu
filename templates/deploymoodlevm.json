@@ -1,0 +1,81 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tEduCommon": {
+            "type": "object"
+        },
+        "subnetId": {
+            "type": "string"
+        },
+        "moodleStaticIP": {
+            "type": "string"
+        },
+        "publicIpId": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2017-10-01",
+            "name": "moodleNic",
+            "location": "[parameters('tEduCommon').location]",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "[parameters('moodleStaticIP')]",
+                            "subnet": {
+                                "id": "[parameters('subnetId')]"
+                            },
+                            "publicIPAddress": {
+                                "id": "[parameters('publicIpId')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2017-12-01",
+            "name": "moodleTeslaEdu",
+            "location": "[parameters('tEduCommon').location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', 'moodleNic')]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS1_v2"
+                },
+                "osProfile": {
+                    "computerName": "teslaEdu",
+                    "adminPassword": "[parameters('tEduCommon').adminPassword]",
+                    "adminUsername": "[parameters('tEduCommon').adminUsername]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "Canonical",
+                        "offer": "UbuntuServer",
+                        "sku": "16.04.0-LTS",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage",
+                        "diskSizeGB": 40
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', 'moodleNic')]"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
