@@ -336,6 +336,9 @@
                     },
                     "publicIpId": {
                         "value": "[reference('networkTemplate').outputs.publicIpId.value]"
+                    },
+                    "vmSetupParamsObj": {
+                        "value": "[reference('deployMoodleParams').outputs.vmSetupParamsObj.value]"
                     }
                 },
                 "templateLink": {
