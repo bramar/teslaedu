@@ -298,6 +298,7 @@
                 "Microsoft.Resources/deployments/mysqlDbServer"
             ],
             "name": "moodleServer",
+            "apiVersion": "2017-05-10",
             "properties": {
                 "mode": "Incremental",
                 "parameters": {
