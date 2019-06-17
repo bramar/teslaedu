@@ -31,6 +31,7 @@ sudo sh -c 'mount /srv/nfs'
 df -h | tee -a /var/log/scripts.log > /dev/null
 log "Exporting mountpoing"
 echo -e "/srv/nfs\t10.0.0.0/24(rw,sync,no_subtree_check)" | sudo tee -a /etc/exports > /dev/null
+sudo exportfs -a
 log "Exported mountpoints"
 sudo showmount -e localhost | sudo tee -a /var/log/scripts.log > /dev/null
 exit 0

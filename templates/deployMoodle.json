@@ -197,7 +197,8 @@
             "mysqlAdminUsername": "[parameters('mysqlAdminUsername')]",
             "mysqlPgressStgSizeGB": "[parameters('mysqlPgressStgSizeGB')]",
             "mysqlPgresVcores": "[parameters('mysqlPgresVcores')]",
-            "mysqlPgresSkuName": "[concat(if(equals(parameters('mysqlSkuTier'),'Basic'),'B',if(equals(parameters('mysqlSkuTier'),'GeneralPurpose'),'GP','MO')),'_',parameters('mysqlSkuHwFamily'),'_',string(parameters('mysqlPgresVcores')))]"
+            "mysqlPgresSkuName": "[concat(if(equals(parameters('mysqlSkuTier'),'Basic'),'B',if(equals(parameters('mysqlSkuTier'),'GeneralPurpose'),'GP','MO')),'_',parameters('mysqlSkuHwFamily'),'_',string(parameters('mysqlPgresVcores')))]",
+            "siteURL": "www.example.com"
         },
         "octets": "[split(variables('tEduCommon').vnetAddressPrefix,'.')]",
         "nfsStaticIP": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.100')]",
@@ -288,6 +289,28 @@
                 },
                 "templateLink": {
                     "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'deploymysql.json')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/mysqlDbServer"
+            ],
+            "name": "deployMoodleParams",
+            "apiVersion": "2017-05-10",
+            "properties": {
+                "mode":"Incremental",
+                "parameters": {
+                    "tEduCommon": {
+                        "value": "[variables('tEduCommon')]"
+                    },
+                    "dbFQDN": {
+                        "value": "[reference('mysqlDbServer').outputs.dbFQDN.value]"
+                    }
+                },
+                "templateLink": {
+                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'setupmoodleparams.json')]"
                 }
             }
         },

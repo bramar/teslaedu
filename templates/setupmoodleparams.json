@@ -1,0 +1,35 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tEduCommon": {
+            "type": "object"
+        },
+        "dbFQDN": {
+            "type": "string"
+        }
+    },
+    "resources": [],
+    "variables": {
+        "vmSetupParamsObj": {
+            "siteProfile": {
+                "siteURL": "[parameters('tEduCommon').siteURL]"
+            },
+            "moodleProfile": {
+                "mysqlAdminUsername": "[parameters('tEduCommon').mysqlAdminUsername]",
+                "mysqlAdminPassword": "[parameters('tEduCommon').mysqlAdminPassword]"
+            },
+            "dbServerProfile": {
+                "dbFQDN": "[parameters('dbFQDN')]",
+                "mysqlAdminUsername": "[parameters('tEduCommon').mysqlAdminUsername]",
+                "mysqlAdminPassword": "[parameters('tEduCommon').mysqlAdminPassword]"
+            }
+        }
+    },
+    "outputs": {
+        "vmSetupParamsObj": {
+            "value": "[variables('vmSetupParamsObj')]",
+            "type": "object"
+        }
+    }
+}

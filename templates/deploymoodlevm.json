@@ -13,7 +13,13 @@
         },
         "publicIpId": {
             "type": "string"
+        },
+        "vmSetupParamsObj": {
+            "type": "object"
         }
+    },
+    "variables": {
+        "singleQuote": "'"
     },
     "resources": [
         {
@@ -54,7 +60,8 @@
                 "osProfile": {
                     "computerName": "teslaEdu",
                     "adminPassword": "[parameters('tEduCommon').adminPassword]",
-                    "adminUsername": "[parameters('tEduCommon').adminUsername]"
+                    "adminUsername": "[parameters('tEduCommon').adminUsername]",
+                    "customData": "[base64(concat('#cloud-config\nwrite_files:\n- encoding: b64\n  content: ', base64(string(parameters('vmSetupParamsObj'))), '\n  owner: root:root\n  path: /usr/local/moodleparams.json\n  permissions: ', variables('singleQuote'), '0400', variables('singleQuote')))]",
                 },
                 "storageProfile": {
                     "imageReference": {
