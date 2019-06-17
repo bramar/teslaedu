@@ -13,7 +13,7 @@
             "location": "[parameters('tEduCommon').location]",
             "apiVersion": "2018-12-01",
             "properties": {
-                "publicIPAllocationMethod": "Dynamic",
+                "publicIPAllocationMethod": "Static",
                 "publicIPAddressVersion": "IPv4",
                 "dnsSettings": {
                     "domainNameLabel": "[parameters('tEduCommon').dnsNameForPublicIP]"
