@@ -284,9 +284,6 @@
                     },
                     "moodlePublicIp": {
                         "value": "[reference('networkTemplate').outputs.publicIp.value]"
-                    },
-                    "publicIpId": {
-                        "value": "[reference('networkTemplate').outputs.publicIpId.value]"
                     }
                 },
                 "templateLink": {
@@ -300,7 +297,6 @@
                 "Microsoft.Resources/deployments/nfsVmTemaplate",
                 "Microsoft.Resources/deployments/mysqlDbServer"
             ],
-            "apiVersion": "2017-05-10",
             "name": "moodleServer",
             "properties": {
                 "mode": "Incremental",
@@ -314,7 +310,9 @@
                     "moodleStaticIP": {
                         "value": "[variables('moodleStaticIP')]"
                     },
-
+                    "publicIpId": {
+                        "value": "[reference('networkTemplate').outputs.publicIpId.value]"
+                    }
                 },
                 "templateLink": {
                     "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'deploymoodlevm.json')]"
