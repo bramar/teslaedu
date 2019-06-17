@@ -5,9 +5,6 @@
         "tEduCommon": {
             "type": "object"
         },
-        "publicIpId": {
-            "type": "string"
-        },
         "subnetId": {
             "type": "string"
         },
