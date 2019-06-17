@@ -7,6 +7,9 @@
         },
         "mysqlFirewallSubnet": {
             "type": "string"
+        },
+        "moodlePublicIp": {
+            "type": "string"
         }
     },
     "resources": [
@@ -44,6 +47,18 @@
                     "properties":{
                         "startIpAddress": "[concat(parameters('mysqlFirewallSubnet'),'.0')]",
                         "endIpAddress": "[concat(parameters('mysqlFirewallSubnet'),'.255')]"
+                    }
+                },
+                {
+                    "apiVersion": "2017-12-01",
+                    "dependsOn": [
+                        "[concat('Microsoft.DBforMySQL/servers/', parameters('tEduCommon').mysqlServerName)]"
+                    ],
+                    "name": "mysql-allow-moodle",
+                    "type": "firewallRules",
+                    "properties": {
+                        "startIpAddress": "[parameters('moodlePublicIp')]",
+                        "endIpAddress": "[parameters('moodlePublicIp')]"
                     }
                 }
             ]

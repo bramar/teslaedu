@@ -281,6 +281,9 @@
                     },
                     "mysqlFirewallSubnet": {
                         "value": "[variables('mysqlFirewallSubnet')]"
+                    },
+                    "moodlePublicIp": {
+                        "value": "[reference('networkTemplate').outputs.publicIp.value]"
                     }
                 },
                 "templateLink": {
