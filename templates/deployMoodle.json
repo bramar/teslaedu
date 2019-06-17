@@ -300,6 +300,7 @@
                 "Microsoft.Resources/deployments/nfsVmTemaplate",
                 "Microsoft.Resources/deployments/mysqlDbServer"
             ],
+            "apiVersion": "2017-05-10",
             "name": "moodleServer",
             "properties": {
                 "mode": "Incremental",
