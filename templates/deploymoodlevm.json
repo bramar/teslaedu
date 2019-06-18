@@ -91,7 +91,7 @@
                     "type": "extensions",
                     "name": "installMoodle",
                     "dependsOn": [
-                        "[concat('Microsoft.Compute/virtualMachines', 'moodleTeslaEdu')]"
+                        "[concat('Microsoft.Compute/virtualMachines/', 'moodleTeslaEdu')]"
                     ],
                     "apiVersion": "2017-12-01",
                     "location": "[parameters('tEduCommon').location]",
