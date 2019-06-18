@@ -60,6 +60,18 @@
                         "startIpAddress": "[parameters('moodlePublicIp')]",
                         "endIpAddress": "[parameters('moodlePublicIp')]"
                     }
+                },
+                {
+                    "apiVersion": "2017-12-01",
+                    "dependsOn": [
+                        "[concat('Microsoft.DBforMySQL/servers/', parameters('tEduCommon').mysqlServerName)]"
+                    ],
+                    "name": "innodb_file_per_table",
+                    "type": "configurations",
+                    "properties": {
+                        "value": "ON",
+                        "source": "user-override"
+                    }
                 }
             ]
         }
