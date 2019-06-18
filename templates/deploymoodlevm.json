@@ -19,7 +19,10 @@
         }
     },
     "variables": {
-        "singleQuote": "'"
+        "singleQuote": "'",
+        "moodleScriptUrl": "[concat(parameters('tEduCommon')._rootArtifactLocation, 'scripts/installmoodle.sh')]",
+        "helperFunctionsUrl": "[concat(parameters('tEduCommon')._rootArtifactLocation, 'scripts/helperfunctions.sh')]",
+        "commandToExecute": "bash -x installmoodle.sh"
     },
     "resources": [
         {
@@ -82,7 +85,33 @@
                         }
                     ]
                 }
-            }
+            },
+            "resources": [
+                {
+                    "type": "extensions",
+                    "name": "installMoodle",
+                    "dependsOn": [
+                        "[concat('Microsoft.Compute/virtualMachines', 'moodleTeslaEdu')]"
+                    ],
+                    "apiVersion": "2017-12-01",
+                    "location": "[parameters('tEduCommon').location]",
+                    "properties": {
+                        "settings": {
+                            "fileUris": [
+                                "[variables('helperFunctionsUrl')]",
+                                "[variables('moodleScriptUrl')]"
+                            ]
+                        },
+                        "publisher": "Microsoft.Azure.Extensions",
+                        "type": "CustomScript",
+                        "typeHandlerVersion": "2.0",
+                        "autoUpgradeMinorVersion": true,
+                        "protectedSettings": {
+                            "commandToExecute": "[variables('commandToExecute')]"
+                        }
+                    }
+                }
+            ]
         }
     ]
 }
