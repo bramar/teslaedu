@@ -21,4 +21,5 @@ function get_setup_params {
     export mysqlPassword=$(echo $json | jq -r .dbServerProfile.mysqlAdminPassword)
     export mysqlHost=$(echo $json | jq -r .dbServerProfile.dbFQDN)
     export mysqlUsername="$mysqlUsername@$mysqlHost"
+    export nfsIpAddress=$(echo $json | jq -r .storageProfile.nfsIpAddress)
 }

@@ -307,6 +307,9 @@
                     },
                     "dbFQDN": {
                         "value": "[reference('mysqlDbServer').outputs.dbFQDN.value]"
+                    },
+                    "nfsIpAddress": {
+                        "value": "[variables('nfsStaticIP')]"
                     }
                 },
                 "templateLink": {

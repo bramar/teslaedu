@@ -7,6 +7,9 @@
         },
         "dbFQDN": {
             "type": "string"
+        },
+        "nfsIpAddress": {
+            "type": "string"
         }
     },
     "resources": [],
@@ -23,6 +26,9 @@
                 "dbFQDN": "[parameters('dbFQDN')]",
                 "mysqlAdminUsername": "[parameters('tEduCommon').mysqlAdminUsername]",
                 "mysqlAdminPassword": "[parameters('tEduCommon').mysqlAdminPassword]"
+            },
+            "storageProfile": {
+                "nfsIpAddress": "[parameters('nfsIpAddress')]"
             }
         }
     },
