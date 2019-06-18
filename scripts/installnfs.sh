@@ -23,13 +23,13 @@ sudo apt-get install nfs-kernel-server nfs-common -y | tee -a /var/log/scripts.l
 log "Creating mountpoint for nfs"
 sudo mkdir -p /srv/nfs
 log "Optimizing permissions"
-sudo chown nobody:nogroup /srv/nfs
-sudo chmod 777 /srv/nfs
 log "Adding automount to fstab"
 sudo sh -c 'echo "/dev/nfs_vg/nfs_lv\t/srv/nfs\tauto\tdefaults\t0\t0" >> /etc/fstab'
 log "Mounting nfs storage"
 sudo sh -c 'mount /srv/nfs'
 df -h | tee -a /var/log/scripts.log > /dev/null
+sudo chown nobody:nogroup /srv/nfs
+sudo chmod 777 /srv/nfs
 log "Exporting mountpoing"
 echo -e "/srv/nfs\t10.0.0.0/24(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports > /dev/null
 sudo exportfs -a
