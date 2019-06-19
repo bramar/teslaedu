@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+    "handler": "Microsoft.Compute.MultiVm",
+    "version": "0.1.2-preview",
+    "parameters": {
+       "basics": [ ],
+       "steps": [
+           {
+               "name": "teduconfig",
+               "label": "Tesla EDU Configuration",
+               "subLabel": {
+                   "preValidation": "Configure Tesla EDU Service for Deployment",
+                   "postValidation": "Done"
+               },
+               "bladeTitle": "Virtual Machine Settings",
+               "elements": [
+                   
+               ]
+           }
+       ],
+       "outputs": { }
+    }
+ }
