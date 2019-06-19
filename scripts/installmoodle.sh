@@ -34,7 +34,7 @@ sudo wget "https://teslaedurepo.blob.core.windows.net/mainrepo/moodle.zip?sp=r&s
 cd ${mountpoint}
 unzip -qq moodle.zip
 rm moodle.zip
-echo "create database tedu" > /tmp/mysql_setup.sql
-echo "grant all privileges on tedu.* to 'tedu'@'%' identified by 't3duU53r2019'" >> /tmp/mysql_setup.sql
+echo "create database tedu;" > /tmp/mysql_setup.sql
+echo "grant all privileges on tedu.* to 'tedu'@'%' identified by 't3duU53r2019';" >> /tmp/mysql_setup.sql
 sudo mysql -u ${mysqlUsername} -p${mysqlPassword} -h ${mysqlHost} < /tmp/mysql_setup.sql
 sudo chown -R www-root:www-root ${mountpoint}/* ${mountpoint}/.*
