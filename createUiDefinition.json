@@ -14,10 +14,99 @@
                },
                "bladeTitle": "Virtual Machine Settings",
                "elements": [
-                   
+                   {
+                       "name": "adminUsername",
+                       "type": "Microsoft.Compute.UserNameTextBox",
+                       "label": "Admin Username",
+                       "toolTip": "Administrative user to be created during VM deployment",
+                       "osPlatform": "Linux",
+                       "constraints": {
+                           "required": true,
+                           "regex": "^[a-zA-Z][a-zA-Z]{4,15}$",
+                           "validationMessage": "Only letters allowed. Minimum 6 characters."
+                       }
+                   },
+                   {
+                       "name": "adminPassword",
+                       "type": "Microsoft.Compute.CredentialsCombo",
+                       "label": {
+                           "password": "Admin Password",
+                           "confirmPassword": "Repeat Admin Password"
+                       },
+                       "toolTip": {
+                           "password": "Password for Admin user"
+                       },
+                       "osPlatform": "Windows",
+                       "constraints": {
+                           "required": true
+                       }
+                   },
+                   {
+                       "name": "storageAccount",
+                       "type": "Microsoft.Storage.StorageAccountSelector",
+                       "label": "Storage account",
+                       "toolTip": "Storage account to use for deployment",
+                       "defaultValue": {
+                           "type": "Standard_LRS",
+                           "name": "[concat('tedu', take(replace(guid(), '-', ''), 10))]"
+                       },
+                       "constraints": {
+                           "allowedTypes": [
+                               "Premium_LRS",
+                               "Standard_LRS",
+                               "Standard_GRS"
+                           ]
+                       }
+                   },
+                   {
+                       "name": "virtualNetwork",
+                       "type": "Microsoft.Network.VirtualNetworkCombo",
+                       "label": {
+                           "virtualNetwork": "Virtual Network",
+                           "subnets": "Subnets"
+                       },
+                       "toolTip": {
+                           "virtualNetwork": "Virtual Network for TeslaEDU",
+                           "subnets": "Subnets inside Virtual Network"
+                       },
+                       "defaultValue": {
+                           "name": "teduvnet",
+                           "addressPrefixSize": "/16"
+                       },
+                       "constraints": {
+                           "minAddressPrefixSize": "/16"
+                       },
+                       "options": {
+                           "hideExisting": false
+                       },
+                       "subnets": {
+                           "tedusubnet": {
+                               "label": "TeslaEDU Subnet",
+                               "defaultValue": {
+                                   "name": "tedusubnet",
+                                   "addressPrefixSize": "/24"
+                               },
+                               "constraints": {
+                                   "minAddressPrefixSize": "/24"
+                               }
+                           }
+                       },
+                       "visible": true
+                   }
                ]
            }
        ],
-       "outputs": { }
+       "outputs": {
+           "storageAccountName": "[steps('teduconfig').storageAccount.name]",
+           "storageNewOrExisting": "[steps('teduconfig').storageAccount.newOrExisting]",
+           "storageAccountType": "[steps('teduconfig').storageAccount.type]",
+           "location": "[location()]",
+           "adminUsername": "[steps('teduconfig').adminUsername]",
+           "adminPassword": "[steps('teduconfig').adminPassword.password]",
+           "vnetName": "[steps('teduconfig').virtualNetwork.name]",
+           "vnetAddressPrefix": "[steps('teduconfig').virtualNetwork.addressPrefixes]",
+           "vnetNewOrExisting": "[steps('teduconfig').virtualNetwork.newOrExisting]",
+           "addressPrefix": "[steps('teduconfig').subnets[0].addressPrefix]"
+       }
     }
  }
