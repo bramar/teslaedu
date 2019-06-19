@@ -23,7 +23,7 @@
             },
             "moodleProfile": {
                 "mysqlAdminUsername": "[parameters('tEduCommon').mysqlAdminUsername]",
-                "mysqlAdminPassword": "[parameters('tEduCommon').mysqlAdminPassword]",
+                "mysqlAdminPassword": "[parameters('tEduCommon').mysqlAdminPassword]"
             },
             "dbServerProfile": {
                 "dbFQDN": "[parameters('dbFQDN')]",
