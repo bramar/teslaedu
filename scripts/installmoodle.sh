@@ -15,6 +15,8 @@ echo "MySQL Password $mysqlPassword" >> /tmp/log.txt
 echo "MySQL FQDN     $mysqlHost" >> /tmp/log.txt
 echo "NFS IP Address $nfsIpAddress" >> /tmp/log.txt
 
+export siteroot=/var/www/html
+
 if [ ! -d $mountpoint ]; then
     sudo mkdir -p $mountpoint
 fi
@@ -30,11 +32,18 @@ else
 fi
 sudo mount ${mountpoint}
 
-sudo wget "https://teslaedurepo.blob.core.windows.net/mainrepo/moodle.zip?sp=r&st=2019-06-17T22:00:00Z&se=2029-12-31T23:00:00Z&spr=https&sv=2018-03-28&sig=jukPxF6eYVT3dgP8pvJTnRV%2Bke%2F5h6jvn3cYhCBmRm0%3D&sr=b" -k -O ${mountpoint}/moodle.zip
-cd ${mountpoint}
-unzip -qq moodle.zip
-rm moodle.zip
+# Get moodle
+cd /var/www/html
+sudo rm index.html
+sudo wget "https://teslaedurepo.blob.core.windows.net/mainrepo/moodle.zip?sp=r&st=2019-06-17T22:00:00Z&se=2029-12-31T23:00:00Z&spr=https&sv=2018-03-28&sig=jukPxF6eYVT3dgP8pvJTnRV%2Bke%2F5h6jvn3cYhCBmRm0%3D&sr=b" -k -O /var/www/html/moodle.zip
+sudo unzip -q moodle.zip
+sudo rm moodle.zip
+sudo chown -R www-data:www-data .
+
 echo "create database tedu;" > /tmp/mysql_setup.sql
 echo "grant all privileges on tedu.* to 'tedu'@'%' identified by 't3duU53r2019';" >> /tmp/mysql_setup.sql
 sudo mysql -u ${mysqlUsername} -p${mysqlPassword} -h ${mysqlHost} < /tmp/mysql_setup.sql
-sudo chown -R www-root:www-root ${mountpoint}/* ${mountpoint}/.*
+
+sudo -u www-data php ${siteroot}/admin/cli/install.php --chmod=777  --lang=en --wwwroot="${siteFQDN}" --dataroot="${mountpoint}" --dbhost="${mysqlHost}" --dbname='tedu' --dbuser="tedu@${mysqlHost}" --dbpass='t3duU53r2019' --fullname='TESLA EDU' --shortname='tedu' --adminuser='admin' --adminpass='#lfaRomeo156' --adminemail='dummy@example.com' --non-interactive --agree-license --allow-unstable || true
+
+sudo systemctl reload apache2
