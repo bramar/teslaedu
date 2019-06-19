@@ -89,7 +89,8 @@
             "type": "string"
         },
         "domainNameLabel": {
-            "value": "[reference('fetchIpAddress').outputs.domainNameLabel.value]"
+            "value": "[reference('fetchIpAddress').outputs.domainNameLabel.value]",
+            "type": "string"
         }
     }
 }
