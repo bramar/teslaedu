@@ -10,17 +10,20 @@
         },
         "nfsIpAddress": {
             "type": "string"
+        },
+        "domainNameLabel": {
+            "type": "string"
         }
     },
     "resources": [],
     "variables": {
         "vmSetupParamsObj": {
             "siteProfile": {
-                "siteURL": "[parameters('tEduCommon').siteURL]"
+                "siteURL": "[parameters('domainNameLabel')]"
             },
             "moodleProfile": {
                 "mysqlAdminUsername": "[parameters('tEduCommon').mysqlAdminUsername]",
-                "mysqlAdminPassword": "[parameters('tEduCommon').mysqlAdminPassword]"
+                "mysqlAdminPassword": "[parameters('tEduCommon').mysqlAdminPassword]",
             },
             "dbServerProfile": {
                 "dbFQDN": "[parameters('dbFQDN')]",

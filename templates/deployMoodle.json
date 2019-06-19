@@ -310,6 +310,9 @@
                     },
                     "nfsIpAddress": {
                         "value": "[variables('nfsStaticIP')]"
+                    },
+                    "domainNameLabel": {
+                        "value": "[reference('networkTemplate').outputs.domainNameLabel.value]"
                     }
                 },
                 "templateLink": {

@@ -87,6 +87,9 @@
         "publicIp": {
             "value": "[reference('fetchIpAddress').outputs.ipAddress.value]",
             "type": "string"
+        },
+        "domainNameLabel": {
+            "value": "[reference('fetchIpAddress').outputs.domainNameLabel.value]"
         }
     }
 }
