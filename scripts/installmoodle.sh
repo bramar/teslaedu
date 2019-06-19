@@ -44,6 +44,6 @@ echo "create database tedu;" > /tmp/mysql_setup.sql
 echo "grant all privileges on tedu.* to 'tedu'@'%' identified by 't3duU53r2019';" >> /tmp/mysql_setup.sql
 sudo mysql -u ${mysqlUsername} -p${mysqlPassword} -h ${mysqlHost} < /tmp/mysql_setup.sql
 
-sudo -u www-data php ${siteroot}/admin/cli/install.php --chmod=777  --lang=en --wwwroot="${siteFQDN}" --dataroot="${mountpoint}" --dbhost="${mysqlHost}" --dbname='tedu' --dbuser="tedu@${mysqlHost}" --dbpass='t3duU53r2019' --fullname='TESLA EDU' --shortname='tedu' --adminuser='admin' --adminpass='#lfaRomeo156' --adminemail='dummy@example.com' --non-interactive --agree-license --allow-unstable || true
+sudo -u www-data php ${siteroot}/admin/cli/install.php --chmod=777  --lang=en --wwwroot="${siteFQDN}" --dataroot="${mountpoint}" --dbhost="${mysqlHost}" --dbname='tedu' --dbuser="tedu@${mysqlHost}" --dbpass='t3duU53r2019' --fullname='TESLA EDU' --shortname='tedu' --adminuser="${teslaEduAdminUsername}" --adminpass="${teslaEduAdminPassword}" --adminemail="${teslaEduAdminEmail}" --non-interactive --agree-license --allow-unstable || true
 
 sudo systemctl reload apache2

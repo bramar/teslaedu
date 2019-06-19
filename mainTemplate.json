@@ -2,6 +2,27 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "teslaEduAdminUsername": {
+            "type": "string",
+            "defaultValue": "bramar",
+            "metadata": {
+                "description": "Admin username for TeslaEDU portal"
+            }
+        },
+        "teslaEduAdminPassword": {
+            "type": "securestring",
+            "defaultValue": "#lfaRomeo156",
+            "metadata": {
+                "description": "Admin password for TeslaEDU"
+            }
+        },
+        "teslaEduAdminEmail": {
+            "type": "string",
+            "defaultValue": "dummpy@example.com",
+            "metadata": {
+                "description": "Admin Email for TeslaEDU"
+            }
+        },
         "adminUsername": {
             "type": "string",
             "defaultValue": "bramar",
@@ -135,7 +156,10 @@
                     "mysqlAdminPassword": { "value": "[parameters('mysqlAdminPassword')]"},
                     "mysqlSkuTier": { "value": "[parameters('mysqlSkuTier')]"},
                     "mysqlSkuHwFamily": { "value": "[parameters('mysqlSkuHwFamily')]"},
-                    "mysqlVersion": { "value": "[parameters('mysqlVersion')]" }
+                    "mysqlVersion": { "value": "[parameters('mysqlVersion')]" },
+                    "teslaEduAdminUsername": { "value": "[parameters('teslaEduAdminUsername')]" },
+                    "teslaEduAdminPassword": { "value": "[parameters('teslaEduAdminPassword')]" },
+                    "teslaEduAdminEmail": { "value": "[parameters('teslaEduAdminEmail')]" }
                 },
                 "templateLink": {
                     "uri": "[concat(variables('_artifactLocation'), 'deployMoodle.json')]"

@@ -22,8 +22,9 @@
                 "siteURL": "[parameters('domainNameLabel')]"
             },
             "moodleProfile": {
-                "mysqlAdminUsername": "[parameters('tEduCommon').mysqlAdminUsername]",
-                "mysqlAdminPassword": "[parameters('tEduCommon').mysqlAdminPassword]"
+                "teslaEduAdminUsername": "[parameters('tEduCommon').teslaEduAdminUsername]",
+                "teslaEduAdminPassword": "[parameters('tEduCommon').teslaEduAdminPassword]",
+                "teslaEduAdminEmail": "[parameters('tEduCommon').teslaEduAdminEmail]"
             },
             "dbServerProfile": {
                 "dbFQDN": "[parameters('dbFQDN')]",

@@ -17,6 +17,9 @@ function get_setup_params {
 
     local json=$(cat $configFile)
     export siteFQDN=$(echo $json | jq -r .siteProfile.siteURL)
+    export teslaEduAdminUsername=$(echo $json | jq -r .moodleProfile.teslaEduAdminUsername)
+    export teslaEduAdminPassword=$(echo $json | jq -r .moodleProfile.teslaEduAdminPassword)
+    export teslaEduAdminEmail=$(echo $json | jq -r .moodleProfile.teslaEduAdminEmail)
     export mysqlUsername=$(echo $json | jq -r .dbServerProfile.mysqlAdminUsername)
     export mysqlPassword=$(echo $json | jq -r .dbServerProfile.mysqlAdminPassword)
     export mysqlHost=$(echo $json | jq -r .dbServerProfile.dbFQDN)

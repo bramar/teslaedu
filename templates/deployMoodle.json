@@ -2,6 +2,23 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "teslaEduAdminUsername": {
+            "type": "string",
+            "defaultValue": "bramar",
+            "metadata": {
+                "description": "Admin username for TeslaEDU portal"
+            }
+        },
+        "teslaEduAdminPassword": {
+            "type": "securestring",
+            "defaultValue": "#lfaRomeo156",
+            "metadata": {
+                "description": "Admin password for TeslaEDU"
+            }
+        },
+        "teslaEduAdminEmail": {
+            "type": "string"
+        },
         "_artifactLocation": {
             "type": "string",
             "metadata": {
@@ -175,6 +192,9 @@
         "tEduCommon": {
             "_rootArtifactLocation": "https://raw.githubusercontent.com/bramar/teslaedu/master/",
             "storageAccountName": "[concat(parameters('storageAccountName'),variables('resourceprefix'))]",
+            "teslaEduAdminUsername": "[parameters('teslaEduAdminUsername')]",
+            "teslaEduAdminPassword": "[parameters('teslaEduAdminPassword')]",
+            "teslaEduAdminEmail": "[parameters('teslaEduAdminEmail')]",
             "storageNewOrExisting": "[parameters('storageNewOrExisting')]",
             "storageAccountType": "[parameters('storageAccountType')]",
             "location": "[parameters('location')]",
@@ -204,7 +224,7 @@
         "nfsStaticIP": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2], '.100')]",
         "moodleStaticIP": "[concat(variables('octets')[0],'.',variables('octets')[1],'.', variables('octets')[2], '.110')]",
         "mysqlFirewallSubnet": "[concat(variables('octets')[0], '.', variables('octets')[1], '.', variables('octets')[2])]",
-        "resourceprefix": "[substring(uniqueString(resourceGroup().id, deployment().name, 'TeslaEdu'),3,8)]"
+        "resourceprefix": "[substring(uniqueString(resourceGroup().id, deployment().name, 'TeslaEdu'),3,10)]"
     },
     "resources": [
         {
