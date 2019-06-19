@@ -208,6 +208,19 @@
     },
     "resources": [
         {
+            "apiVersion": "2018-02-01",
+            "name": "pid-cd58f872-faf7-5023-a7cc-c2e38b301a95",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": []
+                }
+            }
+        },
+        {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2017-05-10",
             "name": "networkTemplate",

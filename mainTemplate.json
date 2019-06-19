@@ -6,13 +6,13 @@
             "type": "string",
             "defaultValue": "bramar",
             "metadata": {
-                "description": "Admin username for VM"
+                "description": "Admin username for Linux virtual machines"
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "Admin password for VM"
+                "description": "Admin password for Linux virtual machines"
             },
             "defaultValue": "AlfaRomeo156"
         },
@@ -20,12 +20,15 @@
             "type": "string",
             "defaultValue": "tEduVNet",
             "metadata": {
-                "description": "Tesla Edu VNet Name"
+                "description": "Virtual Network name"
             }
         },
         "vnetAddressPrefix": {
             "type": "string",
-            "defaultValue": "10.0.0.0/16"
+            "defaultValue": "10.0.0.0/16",
+            "metadata": {
+                "description": "Address prefix for Virtual Network"
+            }
         },
         "vnetNewOrExisting": {
             "type": "string",
@@ -33,7 +36,10 @@
         },
         "addressPrefix": {
             "type": "string",
-            "defaultValue": "10.0.0.0/24"
+            "defaultValue": "10.0.0.0/24",
+            "metadata": {
+                "description": "Private Subnet address prefix for Linux machines"
+            }
         },
         "publicIPNewOrExisting": {
             "type": "string",
@@ -41,15 +47,24 @@
         },
         "dnsNameForPublicIP": {
             "type": "string",
-            "defaultValue": "tedupip"
+            "defaultValue": "tedupip",
+            "metadata": {
+                "description": "Domain name prefix for Tesla EDU service. This will be used to access Tesla Edu Service"
+            }
         },
         "mysqlAdminUsername": {
             "type": "string",
-            "defaultValue": "bramar"
+            "defaultValue": "bramar",
+            "metadata": {
+                "description": "MySQL Administrator Username"
+            }
         },
         "mysqlAdminPassword": {
             "type": "securestring",
-            "defaultValue": "@lfaRomeo156"
+            "defaultValue": "@lfaRomeo156",
+            "metadata": {
+                "description": "MySQL Administrator Password"
+            }
         },
         "nfsDiskSize": {
             "type": "int",
@@ -62,7 +77,10 @@
                 200,
                 250,
                 300
-            ]
+            ],
+            "metadata": {
+                "description": "NFS Disk size for Moodle Repository"
+            }
         },        
         "mysqlSkuTier": {
             "type": "string",
