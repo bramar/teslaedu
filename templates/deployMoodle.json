@@ -3,35 +3,19 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "teslaEduAdminUsername": {
-            "type": "string",
-            "defaultValue": "bramar",
-            "metadata": {
-                "description": "Admin username for TeslaEDU portal"
-            }
+            "type": "string"
         },
         "teslaEduAdminPassword": {
-            "type": "securestring",
-            "defaultValue": "#lfaRomeo156",
-            "metadata": {
-                "description": "Admin password for TeslaEDU"
-            }
+            "type": "securestring"
         },
         "teslaEduAdminEmail": {
             "type": "string"
         },
         "adminUsername": {
-            "type": "string",
-            "defaultValue": "bramar",
-            "metadata": {
-                "description": "Admin username for VM"
-            }
+            "type": "string"
         },
         "adminPassword": {
-            "type": "securestring",
-            "defaultValue": "AlfaRomeo156",
-            "metadata": {
-                "description": "Admin password for VM"
-            }
+            "type": "securestring"
         },
         "mysqlPgresVcores": {
             "type": "int",
@@ -58,112 +42,56 @@
             }
         },
         "nfsDiskSize": {
-            "type": "int",
-            "defaultValue": "127",
-            "metadata": {
-                "description": "Size per disk for NFS server"
-            }
+            "type": "int"
         },
         "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "Storage account name"
-            }
+            "type": "string"
         },
         "storageNewOrExisting": {
-            "type": "string",
-            "defaultValue": "new",
-            "metadata": {
-                "description": "New or existing storage"
-            }
+            "type": "string"
         },
         "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_LRS",
-            "allowedValues": [
-                "Premium_LRS",
-                "Standard_LRS",
-                "Standard_GRS",
-                "Standard_ZRS",
-                "Standard_RAGRS"
-            ],
-            "metadata": {
-                "description": "Storage Account Sku Type"
-            }
+            "type": "string"
         },
         "vnetName": {
-            "type": "string",
-            "defaultValue": "TEduVNet",
-            "metadata": {
-                "description": "Virtual NET Name"
-            }
+            "type": "string"
         },
         "vnetAddressPrefix": {
-            "type": "string",
-            "defaultValue": "10.0.0.0/16",
-            "metadata": {
-                "description": "Default Address prefix"
-            }
+            "type": "string"
         },
         "vnetNewOrExisting": {
-            "type": "string",
-            "defaultValue": "new"
+            "type": "string"
         },
         "publicIPAddressName": {
-            "type": "string",
-            "defaultValue": "tedupublicip",
-            "metadata": {
-                "description": "Name for Public IP"
-            }
+            "type": "string"
         },
         "addressPrefix": {
-            "type": "string",
-            "defaultValue": "10.0.0.0/24"
+            "type": "string"
         },
         "location": {
             "type": "string",
             "defaultValue": "[resourceGroup().location]"
         },
         "publicIPNewOrExisting": {
-            "type": "string",
-            "defaultValue": "new"
+            "type": "string"
         },
         "dnsNameForPublicIP": {
-            "type": "string",
-            "defaultValue": "tedupip"
+            "type": "string"
         },
         "mysqlSkuTier": {
-            "type": "string",
-            "allowedValues": [
-                "Basic",
-                "GeneralPurpose",
-                "MemoryOptimized"
-            ],
-            "defaultValue": "GeneralPurpose"
+            "type": "string"
         },
         "mysqlSkuHwFamily": {
-            "type": "string",
-            "allowedValues": [
-                "Gen4",
-                "Gen5"
-            ],
-            "defaultValue": "Gen5"
+            "type": "string"
         },
         "mysqlVersion": {
-            "type": "string",
-            "allowedValues": [
-                "5.6",
-                "5.7"
-            ],
-            "defaultValue": "5.7"
+            "type": "string"
         },
         "mysqlAdminUsername": {
-            "type": "string",
-            "defaultValue": "bramar"
+            "type": "string"
         },
         "mysqlAdminPassword": {
-            "type": "securestring",
-            "defaultValue": "trustno1"
+            "type": "securestring"
         }
     },
     "variables": {
