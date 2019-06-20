@@ -7,12 +7,12 @@
        "steps": [
            {
                "name": "teduconfig",
-               "label": "Tesla EDU Configuration",
+               "label": "Tesla EDU VMs Configuration",
                "subLabel": {
                    "preValidation": "Configure Tesla EDU Service for Deployment",
                    "postValidation": "Done"
                },
-               "bladeTitle": "Virtual Machine Settings",
+               "bladeTitle": "Virtual Machines Settings",
                "elements": [
                    {
                        "name": "adminUsername",
@@ -92,9 +92,234 @@
                            }
                        },
                        "visible": true
+                   },
+                   {
+                       "name": "publicIpConfiguration",
+                       "type": "Microsoft.Network.PublicIpAddressCombo",
+                       "label": {
+                           "publicIpAddress": "Public IP Address",
+                           "domainNameLabel": "Domain name label"
+                       },
+                       "toolTip": {
+                           "publicIpAddress": "Public IP Address for Tesla EDU Service",
+                           "domainNameLabel": "DNS Label for FQDN Access to Tesla EDU Services"
+                       },
+                       "defaultValue": {
+                           "publicIpAddressName": "tedupubip",
+                           "domainNameLabel": "teduct"
+                       },
+                       "constraints": {
+                           "required": {
+                               "domainNameLabel": true
+                           }
+                       },
+                       "options": {
+                           "hideDomainNameLabel": false,
+                           "hideExisting": true,
+                           "hideNone": true
+                       },
+                       "visible": true
                    }
                ]
-           }
+           },
+           {
+               "name": "mysqlSettings",
+               "label": "MySQL Database Settings",
+               "subLabel": {
+                   "preValidation": "Configure MySQL Server settings",
+                   "postValidation": "Done!"
+               },
+               "bladeSubtitle": "MySQL Settings",
+               "elements": [
+                   {
+                       "name": "mysqlAdminUsername",
+                       "type": "Microsoft.Compute.UserNameTextBox",
+                       "label": "MySQL ROOT user username",
+                       "toolTip": "Root username for MySQL Connection",
+                       "defaultValue": "",
+                       "constraints": {
+                           "required": true,
+                           "regex": "^[a-zA-Z][a-zA-Z]{4,15}$",
+                           "validationMessage": "Only letters allowed. Minimum 6 characters and maximum 16 characters."
+                       },
+                       "osPlatform": "Windows",
+                       "visible": true
+                   },
+                   {
+                       "name": "mysqlAdminPassword",
+                       "type": "Microsoft.Common.PasswordBox",
+                       "label": {
+                           "password": "MySQL ROOT password",
+                           "confirmPassword": "Confirm MySQL ROOT password"
+                       },
+                       "visible": true,
+                       "constraints": {
+                           "required": true
+                       }
+                   },
+                   {
+                       "name": "mysqlSkuTier",
+                       "type": "Microsoft.Common.DropDown",
+                       "label": "MySQL SKU Tier",
+                       "defaultValue": "GeneralPurpose",
+                       "constraints": {
+                           "allowedValues": [
+                               {
+                                   "label": "General Purpose",
+                                   "value": "GeneralPurpose"
+                               },
+                               {
+                                   "label": "Basic",
+                                   "value": "Basic"
+                               },
+                               {
+                                   "label": "Memory Optimized",
+                                   "value": "MemoryOptimized"
+                               }
+                           ],
+                           "required": true
+                       },
+                       "visible": true
+                   },
+                   {
+                       "name": "mysqlSkuHwFamily",
+                       "type": "Microsoft.Common.DropDown",
+                       "label": "MySQL Hardware Family",
+                       "defaultValue": "Gen5",
+                       "constraints": {
+                           "allowedValues": [
+                               {
+                                   "label": "Gen 4",
+                                   "value": "Gen4"
+                               },
+                               {
+                                   "label": "Gen 5",
+                                   "value": "Gen5"
+                               }
+                           ],
+                           "required": true
+                       },
+                       "visible": true
+                   },
+                   {
+                       "name": "mysqlVersion",
+                       "type": "Microsoft.Common.DropDown",
+                       "label": "MySQL Server Version",
+                       "defaultValue": "5.7",
+                       "constraints": {
+                           "allowedValues": [
+                               {
+                                   "label": "5.6",
+                                   "value": "5.6"
+                               },
+                               {
+                                   "label": "5.7",
+                                   "value": "5.7"
+                               }
+                           ],
+                           "required": true
+                       },
+                       "visible": true
+                   }
+               ]
+           },
+           {
+               "name": "nfsSettings",
+               "label": "NFS Server Settings",
+               "subLabel": {
+                   "preValidation": "Configure NFS Server Settings",
+                   "postValidation": "Done!"
+               },
+               "bladeTitle": "NFS Settings",
+               "elements": [
+                   {
+                       "name": "nfsDiskSize",
+                       "type": "Microsoft.Common.DropDown",
+                       "label": "NFS Server Data Disk size",
+                       "defaultValue": 120,
+                       "constraints": {
+                           "allowedValues": [
+                               {
+                                   "label": "80 GB",
+                                   "value": 80
+                               },
+                               {
+                                   "label": "100 GB",
+                                   "value": 100
+                               },
+                               {
+                                   "label": "120 GB",
+                                   "value": 120
+                               },
+                               {
+                                   "label": "150 GB",
+                                   "value": 150
+                               },
+                               {
+                                   "label": "200 GB",
+                                   "value": 200
+                               },
+                               {
+                                   "label": "250 GB",
+                                   "value": 250
+                               },
+                               {
+                                   "label": "300 GB",
+                                   "value": 300
+                               }
+                           ],
+                           "required": true
+                       },
+                       "visible": true
+                   }
+               ]
+           },
+           {
+            "name": "portalSettings",
+            "label": "TeslaEDU Portal Settings",
+            "subLabel": {
+                "preValidation": "Configure TeslaEDU Portal Settings",
+                "postValidation": "Done!"
+            },
+            "bladeTitle": "TeslaEDU Settings",
+            "elements": [
+                {
+                    "name": "teslaEduAdminUsername",
+                    "type": "Microsoft.Compute.UserNameTextBox",
+                    "label": "TeslaEDU Portal Admin Username",
+                    "defaultValue": "",
+                    "constraints": {
+                        "required": true,
+                        "regex": "^[a-zA-Z][a-zA-Z]{4,15}$",
+                        "validationMessage": "Only letters allowed. Minimum 6 characters and maximum 16 characters."
+                    },
+                    "osPlatform": "Windows",
+                    "visible": true
+                },
+                {
+                    "name": "teslaEduAdminPassword",
+                    "type": "Microsoft.Common.PasswordBox",
+                    "label": {
+                        "password": "TeslaEDU Portal Admin Password",
+                        "confirmPassword": "Confirm Password"
+                    },
+                    "visible": true,
+                    "constraints": {
+                        "required": true
+                    }
+                },
+                {
+                    "name": "teslaEduAdminEmail",
+                    "type": "Microsoft.Common.TextBox",
+                    "label": "TeslaEDU Portal E-Mail",
+                    "constraints": {
+                        "required": true,
+                        "regex": "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
+                        "validationMessage": "Valid E-Mail Address required"
+                    }
+                }
+            ]
+           }       
        ],
        "outputs": {
            "storageAccountName": "[steps('teduconfig').storageAccount.name]",
@@ -104,9 +329,20 @@
            "adminUsername": "[steps('teduconfig').adminUsername]",
            "adminPassword": "[steps('teduconfig').adminPassword.password]",
            "vnetName": "[steps('teduconfig').virtualNetwork.name]",
-           "vnetAddressPrefix": "[steps('teduconfig').virtualNetwork.addressPrefixes]",
+           "vnetAddressPrefix": "[steps('teduconfig').virtualNetwork.addressPrefix]",
            "vnetNewOrExisting": "[steps('teduconfig').virtualNetwork.newOrExisting]",
-           "addressPrefix": "[steps('teduconfig').subnets[0].addressPrefix]"
+           "addressPrefix": "[steps('teduconfig').virtualNetwork.subnets.tedusubnet.addressPrefix]",
+           "publicIPNewOrExisting": "[steps('teduconfig').publicIpConfiguration.newOrExistingOrNone]",
+           "dnsNameForPublicIP": "[steps('teduconfig').publicIpConfiguration.domainNameLabel]",
+           "mysqlAdminUsername": "[steps('mysqlSettings').mysqlAdminUsername]",
+           "mysqlAdminPassword": "[steps('mysqlSettings').mysqlAdminPassword.password]",
+           "mysqlSkuTier": "[steps('mysqlSettings').mysqlSkuTier]",
+           "mysqlSkuHwFamily": "[steps('mysqlSettings').mysqlSkuHwFamily]",
+           "mysqlVersion": "[steps('mysqlSettings').mysqlVersion]",
+           "nfsDiskSize": "[steps('nfsSettings').nfsDiskSize]",
+           "teslaEduAdminUsername": "[steps('portalSettings').teslaEduAdminUsername]",
+           "teslaEduAdminPassword": "[steps('portalSettings').teslaEduAdminPassword.password]",
+           "teslaEduAdminEmail": "[steps('portalSettings').teslaEduAdminEmail]"
        }
     }
  }
