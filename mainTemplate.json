@@ -149,7 +149,7 @@
         }
     },
     "variables": {
-        "_artifactLocation": "https://raw.githubusercontent.com/bramar/teslaedu/master/templates/"
+        "_artifactLocation": "[uri(deployment().properties.templateLink.uri, '/templates/')]"
     },
     "resources": [
         {
@@ -159,7 +159,6 @@
             "properties": {
                 "mode":"Incremental",
                 "parameters": {
-                    "_artifactLocation": { "value": "[variables('_artifactLocation')]" },
                     "storageAccountName": { "value": "[parameters('storageAccountName')]" },
                     "storageNewOrExisting": { "value": "[parameters('storageNewOrExisting')]" },
                     "storageAccountType": { "value": "[parameters('storageAccountType')]" },
