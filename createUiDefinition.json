@@ -129,7 +129,7 @@
                    "preValidation": "Configure MySQL Server settings",
                    "postValidation": "Done!"
                },
-               "bladeSubtitle": "MySQL Settings",
+               "bladeTitle": "MySQL Settings",
                "elements": [
                    {
                        "name": "mysqlAdminUsername",
