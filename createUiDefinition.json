@@ -161,7 +161,7 @@
                        "name": "mysqlSkuTier",
                        "type": "Microsoft.Common.DropDown",
                        "label": "MySQL SKU Tier",
-                       "defaultValue": "GeneralPurpose",
+                       "defaultValue": "General Purpose",
                        "constraints": {
                            "allowedValues": [
                                {
@@ -185,7 +185,7 @@
                        "name": "mysqlSkuHwFamily",
                        "type": "Microsoft.Common.DropDown",
                        "label": "MySQL Hardware Family",
-                       "defaultValue": "Gen5",
+                       "defaultValue": "Gen 5",
                        "constraints": {
                            "allowedValues": [
                                {
@@ -236,7 +236,7 @@
                        "name": "nfsDiskSize",
                        "type": "Microsoft.Common.DropDown",
                        "label": "NFS Server Data Disk size",
-                       "defaultValue": 120,
+                       "defaultValue": "120 GB",
                        "constraints": {
                            "allowedValues": [
                                {
