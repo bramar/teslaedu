@@ -9,6 +9,25 @@
                 "description": "Admin username for TeslaEDU portal"
             }
         },
+        "storageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage account name"
+            }
+        },
+        "storageNewOrExisting": {
+            "type": "string",
+            "defaultValue": "new",
+            "metadata": {
+                "description": "New or existing storage"
+            }
+        },
+        "location": {
+            "type": "string"
+        },
+        "storageAccountType": {
+            "type": "string"
+        },
         "teslaEduAdminPassword": {
             "type": "securestring",
             "defaultValue": "#lfaRomeo156",
@@ -141,6 +160,10 @@
                 "mode":"Incremental",
                 "parameters": {
                     "_artifactLocation": { "value": "[variables('_artifactLocation')]" },
+                    "storageAccountName": { "value": "[parameters('storageAccountName')]" },
+                    "storageNewOrExisting": { "value": "[parameters('storageNewOrExisting')]" },
+                    "storageAccountType": { "value": "[parameters('storageAccountType')]" },
+                    "location": { "value": "[parameters('location')]" },
                     "adminUsername": { "value": "[parameters('adminUsername')]" },
                     "adminPassword": { "value": "[parameters('adminPassword')]" },
                     "mysqlPgresVcores": { "value": 8 },

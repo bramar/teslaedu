@@ -68,8 +68,7 @@
             "type": "string",
             "metadata": {
                 "description": "Storage account name"
-            },
-            "defaultValue": "tedusa"
+            }
         },
         "storageNewOrExisting": {
             "type": "string",
