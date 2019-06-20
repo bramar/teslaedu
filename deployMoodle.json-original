@@ -19,6 +19,13 @@
         "teslaEduAdminEmail": {
             "type": "string"
         },
+        "_artifactLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "URI For nested templates"
+            },
+            "defaultValue": "https://raw.githubusercontent.com/bramar/teslaedu/master/templates/"
+        },
         "adminUsername": {
             "type": "string",
             "defaultValue": "bramar",
@@ -169,7 +176,7 @@
     },
     "variables": {
         "tEduCommon": {
-            "_rootArtifactLocation": "[uri(deployment().properties.templateLink.uri, '/')]",
+            "_rootArtifactLocation": "https://raw.githubusercontent.com/bramar/teslaedu/master/",
             "storageAccountName": "[concat(parameters('storageAccountName'),variables('resourceprefix'))]",
             "teslaEduAdminUsername": "[parameters('teslaEduAdminUsername')]",
             "teslaEduAdminPassword": "[parameters('teslaEduAdminPassword')]",
@@ -177,7 +184,7 @@
             "storageNewOrExisting": "[parameters('storageNewOrExisting')]",
             "storageAccountType": "[parameters('storageAccountType')]",
             "location": "[parameters('location')]",
-            "baseTemplateUrl": "[uri(variables('tEduCommon')._rootArtifactLocation,'templates/')]",
+            "baseTemplateUrl": "[parameters('_artifactLocation')]",
             "vnetNewOrExisting": "[parameters('vnetNewOrExisting')]",
             "vnetAddressPrefix": "[parameters('vnetAddressPrefix')]",
             "vnetName": "[concat(parameters('vnetName'),'-',variables('resourceprefix'))]",
