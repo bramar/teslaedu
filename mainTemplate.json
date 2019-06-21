@@ -198,7 +198,8 @@
                     "teslaEduAdminUsername": { "value": "[parameters('teslaEduAdminUsername')]" },
                     "teslaEduAdminPassword": { "value": "[parameters('teslaEduAdminPassword')]" },
                     "teslaEduAdminEmail": { "value": "[parameters('teslaEduAdminEmail')]" },
-                    "publicIPAddressName": { "value": "[parameters('publicIPAddressName')]" }
+                    "publicIPAddressName": { "value": "[parameters('publicIPAddressName')]" },
+                    "_artifactLocation": { "value": "[variables('_artifactLocation')]" }
                 },
                 "templateLink": {
                     "uri": "[uri(variables('_artifactLocation'), 'templates/deployMoodle.json')]"
