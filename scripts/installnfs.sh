@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ADDRPFX=$1
 sudo sh -c 'echo "" > /var/log/scripts.log'
 sudo sh -c 'chmod 777 /var/log/scripts.log'
 
@@ -31,7 +32,7 @@ df -h | tee -a /var/log/scripts.log > /dev/null
 sudo chown nobody:nogroup /srv/nfs
 sudo chmod 777 /srv/nfs
 log "Exporting mountpoing"
-echo -e "/srv/nfs\t10.0.0.0/24(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports > /dev/null
+echo -e "/srv/nfs\t$ADDRPFX(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports > /dev/null
 sudo exportfs -a
 log "Exported mountpoints"
 sudo showmount -e localhost | sudo tee -a /var/log/scripts.log > /dev/null

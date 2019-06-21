@@ -13,7 +13,8 @@
         }
     },
     "variables": {
-        "commandToExecute": "bash -x installnfs.sh",
+        "singleQuote": "'",
+        "commandToExecute": "[concat('bash -x installnfs.sh ', variables('singleQuote'), parameters('tEduCommon').addressPrefix, variables('singleQuote'))]",
         "nfsScriptUrl": "[uri(parameters('tEduCommon').baseTemplateUrl, 'scripts/installnfs.sh')]"
     },
     "resources": [
