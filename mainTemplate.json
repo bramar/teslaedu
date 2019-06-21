@@ -149,7 +149,7 @@
         }
     },
     "variables": {
-        "_artifactLocation": "[uri(deployment().properties.templateLink.uri, '/templates/')]"
+        "_artifactLocation": "[deployment().properties.templateLink.uri]"
     },
     "resources": [
         {
@@ -197,7 +197,7 @@
                     "teslaEduAdminEmail": { "value": "[parameters('teslaEduAdminEmail')]" }
                 },
                 "templateLink": {
-                    "uri": "[concat(variables('_artifactLocation'), 'deployMoodle.json')]"
+                    "uri": "[uri(variables('_artifactLocation'), 'templates/deployMoodle.json')]"
                 }
             }
         }
