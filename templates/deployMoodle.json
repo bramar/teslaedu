@@ -104,7 +104,7 @@
             "storageNewOrExisting": "[parameters('storageNewOrExisting')]",
             "storageAccountType": "[parameters('storageAccountType')]",
             "location": "[parameters('location')]",
-            "baseTemplateUrl": "[uri(variables('tEduCommon')._rootArtifactLocation,'templates/')]",
+            "baseTemplateUrl": "[uri(variables('tEduCommon')._rootArtifactLocation,'/templates/')]",
             "vnetNewOrExisting": "[parameters('vnetNewOrExisting')]",
             "vnetAddressPrefix": "[parameters('vnetAddressPrefix')]",
             "vnetName": "[concat(parameters('vnetName'),'-',variables('resourceprefix'))]",

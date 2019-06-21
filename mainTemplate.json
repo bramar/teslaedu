@@ -149,7 +149,7 @@
         }
     },
     "variables": {
-        "_artifactLocation": "[uri(deployment().properties.templateLink.uri, 'templates/')]"
+        "_artifactLocation": "[uri(deployment().properties.templateLink.uri, '/templates/')]"
     },
     "resources": [
         {
