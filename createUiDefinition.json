@@ -334,6 +334,7 @@
            "addressPrefix": "[steps('teduconfig').virtualNetwork.subnets.tedusubnet.addressPrefix]",
            "publicIPNewOrExisting": "[steps('teduconfig').publicIpConfiguration.newOrExistingOrNone]",
            "dnsNameForPublicIP": "[steps('teduconfig').publicIpConfiguration.domainNameLabel]",
+           "publicIPAddressName": "[steps('teduconfig').publicIpConfiguration.name]",
            "mysqlAdminUsername": "[steps('mysqlSettings').mysqlAdminUsername]",
            "mysqlAdminPassword": "[steps('mysqlSettings').mysqlAdminPassword.password]",
            "mysqlSkuTier": "[steps('mysqlSettings').mysqlSkuTier]",

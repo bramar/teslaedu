@@ -146,6 +146,9 @@
                 "5.7"
             ],
             "defaultValue": "5.7"
+        },
+        "publicIPAddressName": {
+            "type": "string"
         }
     },
     "variables": {
@@ -194,7 +197,8 @@
                     "mysqlVersion": { "value": "[parameters('mysqlVersion')]" },
                     "teslaEduAdminUsername": { "value": "[parameters('teslaEduAdminUsername')]" },
                     "teslaEduAdminPassword": { "value": "[parameters('teslaEduAdminPassword')]" },
-                    "teslaEduAdminEmail": { "value": "[parameters('teslaEduAdminEmail')]" }
+                    "teslaEduAdminEmail": { "value": "[parameters('teslaEduAdminEmail')]" },
+                    "publicIPAddressName": { "value": "[parameters('publicIPAddressName')]" }
                 },
                 "templateLink": {
                     "uri": "[uri(variables('_artifactLocation'), 'templates/deployMoodle.json')]"
