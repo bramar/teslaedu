@@ -14,7 +14,7 @@
     },
     "variables": {
         "commandToExecute": "bash -x installnfs.sh",
-        "nfsScriptUrl": "[concat(parameters('tEduCommon')._rootArtifactLocation, 'scripts/installnfs.sh')]"
+        "nfsScriptUrl": "[uri(parameters('tEduCommon').baseTemplateUrl, 'scripts/installnfs.sh')]"
     },
     "resources": [
         {

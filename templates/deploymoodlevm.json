@@ -20,8 +20,8 @@
     },
     "variables": {
         "singleQuote": "'",
-        "moodleScriptUrl": "[concat(parameters('tEduCommon')._rootArtifactLocation, 'scripts/installmoodle.sh')]",
-        "helperFunctionsUrl": "[concat(parameters('tEduCommon')._rootArtifactLocation, 'scripts/helperfunctions.sh')]",
+        "moodleScriptUrl": "[uri(parameters('tEduCommon').baseTemplateUrl, 'scripts/installmoodle.sh')]",
+        "helperFunctionsUrl": "[uri(parameters('tEduCommon').baseTemplateUrl, 'scripts/helperfunctions.sh')]",
         "commandToExecute": "bash -x installmoodle.sh"
     },
     "resources": [

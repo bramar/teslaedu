@@ -96,7 +96,7 @@
     },
     "variables": {
         "tEduCommon": {
-            "_rootArtifactLocation": "[uri(deployment().properties.templateLink.uri, '/')]",
+            "_rootArtifactLocation": "[deployment().properties.templateLink.uri]",
             "storageAccountName": "[concat(parameters('storageAccountName'),variables('resourceprefix'))]",
             "teslaEduAdminUsername": "[parameters('teslaEduAdminUsername')]",
             "teslaEduAdminPassword": "[parameters('teslaEduAdminPassword')]",
@@ -104,7 +104,7 @@
             "storageNewOrExisting": "[parameters('storageNewOrExisting')]",
             "storageAccountType": "[parameters('storageAccountType')]",
             "location": "[parameters('location')]",
-            "baseTemplateUrl": "[uri(variables('tEduCommon')._rootArtifactLocation,'/templates/')]",
+            "baseTemplateUrl": "[deployment().properties.templateLink.uri]",
             "vnetNewOrExisting": "[parameters('vnetNewOrExisting')]",
             "vnetAddressPrefix": "[parameters('vnetAddressPrefix')]",
             "vnetName": "[concat(parameters('vnetName'),'-',variables('resourceprefix'))]",
@@ -146,7 +146,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl, 'network.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/network.json')]"
                 }
             }
         },
@@ -163,7 +163,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'storageAccount.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/storageAccount.json')]"
                 }
             }
         },
@@ -189,7 +189,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'nfsvm.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/nfsvm.json')]"
                 }
             }
         },
@@ -214,7 +214,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'deploymysql.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/deploymysql.json')]"
                 }
             }
         },
@@ -242,7 +242,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'setupmoodleparams.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/setupmoodleparams.json')]"
                 }
             }
         },
@@ -274,7 +274,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[concat(variables('tEduCommon').baseTemplateUrl,'deploymoodlevm.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/deploymoodlevm.json')]"
                 }
             }
         }
