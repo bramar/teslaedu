@@ -37,7 +37,7 @@
                     "subnetName": { "value": "[concat(parameters('tEduCommon').vnetName, '/subnet')]" }
                 },
                 "templateLink": {
-                    "uri": "[concat(parameters('tEduCommon').baseTemplateUrl, 'templates/network-subnets.json')]"
+                    "uri": "[uri(parameters('tEduCommon').baseTemplateUrl, 'templates/network-subnets.json')]"
                 }
             }
         },
@@ -51,7 +51,7 @@
                     "tEduCommon": { "value": "[parameters('tEduCommon')]"}
                 },
                 "templateLink": {
-                    "uri": "[concat(parameters('tEduCommon').baseTemplateUrl, 'templates/publicip.json')]"
+                    "uri": "[uri(parameters('tEduCommon').baseTemplateUrl, 'templates/publicip.json')]"
                 }
             }
         },
@@ -65,7 +65,7 @@
             "properties": {
                 "mode":"Incremental",
                 "templateLink": {
-                    "uri": "[concat(parameters('tEduCommon').baseTemplateUrl, 'templates/fetchPublicIP.json')]"
+                    "uri": "[uri(parameters('tEduCommon').baseTemplateUrl, 'templates/fetchPublicIP.json')]"
                 },
                 "parameters": {
                     "publicIPAddressId": {
