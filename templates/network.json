@@ -19,7 +19,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[concat(parameters('tEduCommon').baseTemplateUrl,'network-vnet.json')]"
+                    "uri": "[uri(parameters('tEduCommon').baseTemplateUrl, 'network-vnet.json')]"
                 }
             }
         },

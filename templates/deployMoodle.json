@@ -146,7 +146,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/network.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'network.json')]"
                 }
             }
         },
@@ -163,7 +163,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/storageAccount.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'storageAccount.json')]"
                 }
             }
         },
@@ -189,7 +189,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/nfsvm.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'nfsvm.json')]"
                 }
             }
         },
@@ -214,7 +214,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/deploymysql.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'deploymysql.json')]"
                 }
             }
         },
@@ -242,7 +242,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/setupmoodleparams.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'setupmoodleparams.json')]"
                 }
             }
         },
@@ -274,7 +274,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'templates/deploymoodlevm.json')]"
+                    "uri": "[uri(variables('tEduCommon').baseTemplateUrl, 'deploymoodlevm.json')]"
                 }
             }
         }
