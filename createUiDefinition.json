@@ -275,50 +275,50 @@
                ]
            },
            {
-            "name": "portalSettings",
-            "label": "TeslaEDU Portal Settings",
-            "subLabel": {
-                "preValidation": "Configure TeslaEDU Portal Settings",
-                "postValidation": "Done!"
-            },
-            "bladeTitle": "TeslaEDU Settings",
-            "elements": [
-                {
-                    "name": "teslaEduAdminUsername",
-                    "type": "Microsoft.Compute.UserNameTextBox",
-                    "label": "TeslaEDU Portal Admin Username",
-                    "defaultValue": "",
-                    "constraints": {
-                        "required": true,
-                        "regex": "^[a-zA-Z][a-zA-Z]{4,15}$",
-                        "validationMessage": "Only letters allowed. Minimum 6 characters and maximum 16 characters."
-                    },
-                    "osPlatform": "Windows",
-                    "visible": true
+                "name": "portalSettings",
+                "label": "TeslaEDU Portal Settings",
+                "subLabel": {
+                    "preValidation": "Configure TeslaEDU Portal Settings",
+                    "postValidation": "Done!"
                 },
-                {
-                    "name": "teslaEduAdminPassword",
-                    "type": "Microsoft.Common.PasswordBox",
-                    "label": {
-                        "password": "TeslaEDU Portal Admin Password",
-                        "confirmPassword": "Confirm Password"
+                "bladeTitle": "TeslaEDU Settings",
+                "elements": [
+                    {
+                        "name": "teslaEduAdminUsername",
+                        "type": "Microsoft.Compute.UserNameTextBox",
+                        "label": "TeslaEDU Portal Admin Username",
+                        "defaultValue": "",
+                        "constraints": {
+                            "required": true,
+                            "regex": "^[a-zA-Z][a-zA-Z]{4,15}$",
+                            "validationMessage": "Only letters allowed. Minimum 6 characters and maximum 16 characters."
+                        },
+                        "osPlatform": "Windows",
+                        "visible": true
                     },
-                    "visible": true,
-                    "constraints": {
-                        "required": true
+                    {
+                        "name": "teslaEduAdminPassword",
+                        "type": "Microsoft.Common.PasswordBox",
+                        "label": {
+                            "password": "TeslaEDU Portal Admin Password",
+                            "confirmPassword": "Confirm Password"
+                        },
+                        "visible": true,
+                        "constraints": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "teslaEduAdminEmail",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "TeslaEDU Portal E-Mail",
+                        "constraints": {
+                            "required": true,
+                            "regex": "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
+                            "validationMessage": "Valid E-Mail Address required"
+                        }
                     }
-                },
-                {
-                    "name": "teslaEduAdminEmail",
-                    "type": "Microsoft.Common.TextBox",
-                    "label": "TeslaEDU Portal E-Mail",
-                    "constraints": {
-                        "required": true,
-                        "regex": "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
-                        "validationMessage": "Valid E-Mail Address required"
-                    }
-                }
-            ]
+                ]
            }       
        ],
        "outputs": {
