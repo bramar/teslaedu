@@ -147,12 +147,13 @@
                    },
                    {
                        "name": "mysqlAdminPassword",
-                       "type": "Microsoft.Common.PasswordBox",
+                       "type": "Microsoft.Compute.CredentialsCombo",
                        "label": {
                            "password": "MySQL ROOT password",
                            "confirmPassword": "Confirm MySQL ROOT password"
                        },
                        "visible": true,
+                       "osPlatform": "Windows",
                        "constraints": {
                            "required": true
                        }
@@ -298,12 +299,13 @@
                     },
                     {
                         "name": "teslaEduAdminPassword",
-                        "type": "Microsoft.Common.PasswordBox",
+                        "type": "Microsoft.Compute.CredentialsCombo",
                         "label": {
                             "password": "TeslaEDU Portal Admin Password",
                             "confirmPassword": "Confirm Password"
                         },
                         "visible": true,
+                        "osPlatform": "Windows",
                         "constraints": {
                             "required": true
                         }
