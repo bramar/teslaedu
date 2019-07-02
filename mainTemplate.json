@@ -27,7 +27,7 @@
         "storageAccountType": {
             "type": "string"
         },
-        "teslaEduAdminPassword": {
+        "teslaEduAdminPasswordd": {
             "type": "securestring",
             "metadata": {
                 "description": "Admin password for TeslaEDU"
@@ -189,7 +189,7 @@
                     "mysqlSkuHwFamily": { "value": "[parameters('mysqlSkuHwFamily')]"},
                     "mysqlVersion": { "value": "[parameters('mysqlVersion')]" },
                     "teslaEduAdminUsername": { "value": "[parameters('teslaEduAdminUsername')]" },
-                    "teslaEduAdminPassword": { "value": "[parameters('teslaEduAdminPassword')]" },
+                    "teslaEduAdminPassword": { "value": "[parameters('teslaEduAdminPasswordd')]" },
                     "teslaEduAdminEmail": { "value": "[parameters('teslaEduAdminEmail')]" },
                     "publicIPAddressName": { "value": "[parameters('publicIPAddressName')]" },
                     "_artifactLocation": { "value": "[variables('_artifactLocation')]" }
