@@ -69,8 +69,7 @@
             "type": "string"
         },
         "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
+            "type": "string"
         },
         "publicIPNewOrExisting": {
             "type": "string"
@@ -138,7 +137,7 @@
     "resources": [
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2017-05-10",
+            "apiVersion": "2019-05-01",
             "name": "networkTemplate",
             "condition": "[equals(variables('tEduCommon').vnetNewOrExisting, 'new')]",
             "properties": {
@@ -155,7 +154,7 @@
         },
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2017-05-10",
+            "apiVersion": "2019-05-01",
             "name": "storageAccountTemplate",
             "condition": "[equals(variables('tEduCommon').storageNewOrExisting, 'new')]",
             "properties": {
@@ -177,7 +176,7 @@
                 "Microsoft.Resources/deployments/networkTemplate"
             ],
             "name": "nfsVmTemaplate",
-            "apiVersion": "2017-05-10",
+            "apiVersion": "2019-05-01",
             "properties": {
                 "mode": "Incremental",
                 "parameters": {
@@ -202,7 +201,7 @@
                 "Microsoft.Resources/deployments/nfsVmTemaplate"
             ],
             "name": "mysqlDbServer",
-            "apiVersion": "2017-05-10",
+            "apiVersion": "2019-05-01",
             "properties": {
                 "mode": "Incremental",
                 "parameters": {
@@ -227,7 +226,7 @@
                 "Microsoft.Resources/deployments/mysqlDbServer"
             ],
             "name": "deployMoodleParams",
-            "apiVersion": "2017-05-10",
+            "apiVersion": "2019-05-01",
             "properties": {
                 "mode":"Incremental",
                 "parameters": {
@@ -256,7 +255,7 @@
                 "Microsoft.Resources/deployments/mysqlDbServer"
             ],
             "name": "moodleServer",
-            "apiVersion": "2017-05-10",
+            "apiVersion": "2019-05-01",
             "properties": {
                 "mode": "Incremental",
                 "parameters": {

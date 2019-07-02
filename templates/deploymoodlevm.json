@@ -22,6 +22,7 @@
         "singleQuote": "'",
         "moodleScriptUrl": "[uri(parameters('tEduCommon').baseTemplateUrl, 'scripts/installmoodle.sh')]",
         "helperFunctionsUrl": "[uri(parameters('tEduCommon').baseTemplateUrl, 'scripts/helperfunctions.sh')]",
+        "moodleZipFile": "[uri(parameters('tEduCommon').baseTemplateUrl, 'moodle/moodle.zip')]",
         "commandToExecute": "bash -x installmoodle.sh"
     },
     "resources": [
@@ -99,7 +100,8 @@
                         "settings": {
                             "fileUris": [
                                 "[variables('helperFunctionsUrl')]",
-                                "[variables('moodleScriptUrl')]"
+                                "[variables('moodleScriptUrl')]",
+                                "[variables('moodleZipFile')]"
                             ]
                         },
                         "publisher": "Microsoft.Azure.Extensions",

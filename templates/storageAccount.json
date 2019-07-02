@@ -15,7 +15,7 @@
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2017-06-01",
+            "apiVersion": "2019-04-01",
             "location": "[parameters('tEduCommon').location]",
             "name": "[parameters('tEduCommon').storageAccountName]",
             "kind": "Storage",
@@ -23,11 +23,5 @@
                 "name": "[parameters('tEduCommon').storageAccountType]"
             }
         }
-    ],
-    "outputs": {
-        "storageAccountKey": {
-            "value": "[listKeys(variables('storageAccountId'), '2017-06-01').keys[0].value]",
-            "type": "string"
-        }
-    }
+    ]
 }

@@ -4,7 +4,6 @@
     "parameters": {
         "teslaEduAdminUsername": {
             "type": "string",
-            "defaultValue": "bramar",
             "metadata": {
                 "description": "Admin username for TeslaEDU portal"
             }
@@ -30,21 +29,18 @@
         },
         "teslaEduAdminPassword": {
             "type": "securestring",
-            "defaultValue": "#lfaRomeo156",
             "metadata": {
                 "description": "Admin password for TeslaEDU"
             }
         },
         "teslaEduAdminEmail": {
             "type": "string",
-            "defaultValue": "dummpy@example.com",
             "metadata": {
                 "description": "Admin Email for TeslaEDU"
             }
         },
         "adminUsername": {
             "type": "string",
-            "defaultValue": "bramar",
             "metadata": {
                 "description": "Admin username for Linux virtual machines"
             }
@@ -53,8 +49,7 @@
             "type": "securestring",
             "metadata": {
                 "description": "Admin password for Linux virtual machines"
-            },
-            "defaultValue": "AlfaRomeo156"
+            }
         },
         "vnetName": {
             "type": "string",
@@ -94,14 +89,12 @@
         },
         "mysqlAdminUsername": {
             "type": "string",
-            "defaultValue": "bramar",
             "metadata": {
                 "description": "MySQL Administrator Username"
             }
         },
         "mysqlAdminPassword": {
             "type": "securestring",
-            "defaultValue": "@lfaRomeo156",
             "metadata": {
                 "description": "MySQL Administrator Password"
             }
@@ -170,7 +163,7 @@
         },        
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2017-05-10",
+            "apiVersion": "2019-05-01",
             "name": "mainTemplate",
             "properties": {
                 "mode":"Incremental",
